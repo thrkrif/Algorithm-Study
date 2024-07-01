@@ -406,9 +406,7 @@ print(get_data('Andy'))
 
 
 
-
-
-
+# 직접 해시를 만들어보자
 
 data1 = 'kim'
 data2 = 'lee'
@@ -431,12 +429,49 @@ def get_data(data):
     hash_address = hash_func(key)
     return hash_table[hash_address]
 
+print(get_data(data1))
 print(get_data('lee'))
 
-    
+
+
+# 2024/06/30 해시 복습
+# 연습1: 리스트 변수를 활용해서 해쉬 테이블 구현해보기
+# 1. 해쉬 함수: key % 8
+# 2. 해쉬 키 생성: hash(data)
+
+data1 = 'a'
+data2 = 'b'
+data3 = 'c'
+
+
+def hash_func1(key):
+    return key % 8
+
+def storage(data, value):
+    key = ord(data[0])
+    hash_address = hash_func1(key)
+    hash_table[hash_address] = value
+
+def get_value(data):
+    key = ord(data[0])
+    hash_address = hash_func1(key)
+    return hash_table[hash_address]
 
 
 
+storage('a',213)
+storage('Hello', 'World')
+
+print(get_value('a'))
+print(get_value('Hello'))    
+
+import hashlib
+
+data = 'test'.encode()
+hash_object = hashlib.sha1()
+hash_object.update(b'test')
+hex_dig = hash_object.hexdigest()
+print(hex_dig)
 
 
 
