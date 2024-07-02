@@ -471,7 +471,63 @@ data = 'test'.encode()
 hash_object = hashlib.sha1()
 hash_object.update(b'test')
 hex_dig = hash_object.hexdigest()
-print(hex_dig)
+print(hex_dig)  # test라는 값에 sha1이라는 해시 함수를 통해 나온 hash값이 16진수로 변환한(hexdigest()) 이와 같다.
+
+# sha1 보다 더 보안 잘 되어있는게 sha256
+
+
+
+
+# 트리
+
+# 이진 탐색 트리
+
+class Node:
+    def __init__(self, value):   # leaf node일 수 있으므로 생성과 동시에 left, right를 만들지는 않는다.
+        self.value = value
+        self.left = None    # 왼쪽 브랜치
+        self.right = None   # 오른쪽 브랜치
+
+class NodeMgmt:
+    def __init__(self,head):
+        self.head = head
+    
+    def insert(self, value):
+        self.current_node = self.head
+
+        while True:
+            if value < self.current_node.value :   # 왼쪽 노드에 데이터를 추가
+                if self.current_node.left != None:
+                    self.current_node = self.current_node.left     # left에 자식 노드가 있다는 것을 의미
+                else:
+                    self.current_node.left = Node(value)    # 데이터가 없으면 데이터를 추가하고 실행을 마친다.
+                    break
+            else:   # 오른쪽 노드에 데이터를 추가(value > self.current_node 인 경우)
+                if self.current_node.right != None:
+                    self.current_node = self.current_node.right
+                else:
+                    self.current_node.right = Node(value)
+                    break
+
+    def search(self,value):
+        self.current_node = self.head
+        while self.current_node:
+            if self.current_node.value == value:
+                return True
+            elif value < self.current_node.value:
+                self.current_node = self.current_node.left
+            else:
+                self.current_node = self.current_node.right
+        return False
+
+head = Node(1)
+BST = NodeMgmt(head)
+BST.insert(2)
+BST.insert(5)
+
+print(BST.search(4))
+
+    
 
 
 
