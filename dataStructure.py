@@ -527,8 +527,21 @@ BST.insert(5)
 
 print(BST.search(4))
 
-    
+#  case 1 삭제할 node가 leaf node 인 경우
+# self.current_node 가 삭제할 Node, self.parent는 삭제할 Node의 Parent Node인 상태
+    # leaf node인지 판단 -> leaf node의 경우 node의 좌우 branch가 None임
+    if  self.current_node.left == None and self.current_node.right == None:
+        # 부모 노드보다 데이터가 작으면 왼쪽, 크면 오른쪽
+        if value < self.parent.value:
+            # 브랜치를 None
+            self.parent.left = None
+        else:
+            self.parent.right = None
+        del self.current_node
 
+    
+# case2 삭제할 node의 child node가 하나인 경우 -> 1) child가 left인 경우, 2) child가 right인 경우
+# 2. 삭제할 node가 parent의 left인지 right인지도 확인 해야함
 
 
 

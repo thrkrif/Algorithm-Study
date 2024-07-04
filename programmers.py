@@ -51,3 +51,36 @@ def solution(a, b):
 # 두 수의 연산값 비교하기
 solution = lambda a,b: max(int(str(a)+str(b)), 2*a*b)
 print(solution(3,12))
+
+# n의 배수
+
+def solution(num, n):
+    answer = 1 if  num % n == 0 else 0
+    return answer
+
+# 홀짝에 따라 다른 값 반환하기
+def solution(n):
+    answer1 = 0
+    answer2 = 0
+    for i in range(n+1):
+        if i % 2 == 1:
+            answer1 += i
+        else:
+            answer2 += i*i
+    
+    return answer1 if n % 2 == 1 else answer2
+
+
+# flag에 따라 다른 값 반환하기
+def solution(a, b, flag):
+    return a+b if flag == True else a-b
+
+# 원소들의 곱과 합
+def solution(num_list):
+    answer1 = 1
+    answer2 = 0
+    for i in range(len(num_list)):
+        answer1 *= num_list[i]
+        answer2 += num_list[i]
+    return 1 if answer1 < answer2**2 else 0
+   
