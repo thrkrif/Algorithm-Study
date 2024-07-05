@@ -153,3 +153,25 @@ while len(delete_nums) != 10:
 for del_num in delete_nums:
     if binary_tree.delete(del_num) == False:
         print('delete Failed', del_num)
+
+# 이어 붙인 수
+def solution(num_list):
+    str1,str2 = '',''
+    for i in range(len(num_list)):
+        if num_list[i] % 2 == 0:
+            str1 += str(num_list[i])
+        else:
+            str2 += str(num_list[i])
+    return int(str1)+int(str2)
+
+# 주사위 게임2
+def solution(a, b, c):
+    score = 0
+    if (a != b) and (a != c) and (b != c):
+        score = a+b+c
+    elif (a == b) and (b == c):
+        score = (a+b+c) + (a*a + b*b + c*c) + (a**3 + b**3 + c**3)
+    else:
+        score = (a+b+c) + (a*a + b*b + c*c)
+    return score
+
