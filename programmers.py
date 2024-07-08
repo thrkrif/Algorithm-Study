@@ -122,9 +122,23 @@
 
 # 마지막 두 원소
 def solution(num_list):
-    answer = num_list[-1], num_list[-2]
-    print(answer)
+   if num_list[-1] > num_list[-2]:
+      return num_list + [(num_list[-1] - num_list[-2])]
+   else:
+      return num_list + [(num_list[-1] * 2)]
+   
+# 수 조작하기
+def solution(n, control):
 
-num_list = [1,2,3,4,5]
-answer = num_list[-1], num_list[-2]
-print(list(answer))
+    for c in control:
+        if c == 'w':
+           n += 1
+        elif c == 's':
+           n -= 1
+        elif c == 'd':
+           n += 10
+        elif c == 'a':
+           n -= 10
+        else: 
+           print('fail')
+    return n
