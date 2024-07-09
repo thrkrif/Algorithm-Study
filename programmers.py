@@ -142,3 +142,35 @@ def solution(n, control):
         else: 
            print('fail')
     return n
+
+# 이어 붙인 수
+def solution(num_list):
+    str1,str2 = '',''
+    for i in range(len(num_list)):
+        if num_list[i] % 2 == 0:
+            str1 += str(num_list[i])
+        else:
+            str2 += str(num_list[i])
+    return int(str1)+int(str2)
+
+# 주사위 게임2
+def solution(a, b, c):
+    score = 0
+    if (a != b) and (a != c) and (b != c):
+        score = a+b+c
+    elif (a == b) and (b == c):
+        score = (a+b+c) + (a*a + b*b + c*c) + (a**3 + b**3 + c**3)
+    else:
+        score = (a+b+c) + (a*a + b*b + c*c)
+    return score
+
+# 등차수열의 특정한 항만 더하기
+def solution(a, d, included):
+    result = 0
+    for i in range(len(included)):
+        # i번째 항의 값을 구합니다.  term은 반복문 돌아갈 때마다 값이 변함.
+        term = a + (d * i)
+        # included[i]가 True인 경우만 result에 더합니다.
+        if included[i]:
+            result += term
+    return result

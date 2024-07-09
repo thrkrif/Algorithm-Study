@@ -520,6 +520,82 @@ class NodeMgmt:
                 self.current_node = self.current_node.right
         return False
 
+         # 삭제할 node 탐색
+    def delete(self,value):
+        searched = False
+        self.parent = self.head
+        self.current_node = self.head
+
+        while self.current_node:
+            if self.current_node.value == value:
+                searched = True
+                break
+            elif value < self.current_node.value:
+                self.parent = self.current_node
+                self.current_node = self.current_node.left
+            else:
+                self.parent = self.current_node
+                self.current_node = self.current_node.right
+        if searched == False:
+            return False
+        
+        # 위 delete로 이미 삭제할 node가 self.current_node가 되었음
+
+        # case1 삭제할 node가 leaf node인 경우
+        if self.current_node.left == None and self.current_node.right == None:
+            if value < self.parent.value:
+                self.parent.left = None
+            else:
+                self.parent.right = None
+            del self.current_node
+
+        # case2 삭제할 node의 child가 하나 있는 경우 -> 1) left child 2) right child
+        if self.current_node.left != None and self.current_node.right == None:
+            if value < self.parent.value:
+                self.parent.left = self.current_node.left
+            else:
+                self.parent.right = self.current_node.left
+        elif self.current_node.left == None and self.current_node.right != None:
+            if value < self.parent.value:
+                self.parent.left = self.current_node.right
+            else:
+                self.parent.right = self.current_node.right
+
+        # case3 삭제할 node의 childe가 2개인 경우
+        # 1.왼쪽 node의 가장 큰 값으로 대체
+        # 2.오른쪽 node의 가장 작은 값으로 대체 -> 코드를 2번으로 만들겠음
+        # 2-1. 가장 작은 값에 child가 없음, 2-2. 가장 작은 값에 오른쪽 child가 존재함
+
+        # child가 두 개임을 의미
+        if self.current_node.left != None and self.current_node.right != None:
+            if value < self.parent.value:
+                self.change_node = self.current_node.right
+                self.change_node_parent = self.current_node.right
+                while self.change_node.left:
+                    self.change_node_parent = self.change_node
+                    self.change_node = self.change_node.left
+                if self.change_node.right != None:
+                    self.change_node_parent.left = self.change_node.right
+                else:
+                    self.change_node_parent.left = None
+                self.parent.left = self.change_node
+                self.change_node.left = self.current_node.left
+                self.change_node.right = self.current_node.rigth
+            # value > self.parent.value 인 경우
+            else:
+                self.change_node = self.current_node.right
+                self.change_node_parent = self.current_node.right
+                while self.change_node.left:
+                    self.change_node_parent = self.change_node
+                    self.change_node = self.change_node.left
+                if self.change_node.right != None:
+                    self.change_node_parent.left = self.change_node.right
+                else:
+                    self.change_node_parent.left = None
+                self.parent.right = self.change_node
+                self.change_node.left = self.current_node.left
+                self.change_node.right = self.current_node.right
+
 head = Node(1)
 BST = NodeMgmt(head)
 BST.insert(2)
@@ -527,21 +603,19 @@ BST.insert(5)
 
 print(BST.search(4))
 
-#  case 1 삭제할 node가 leaf node 인 경우
-# self.current_node 가 삭제할 Node, self.parent는 삭제할 Node의 Parent Node인 상태
-    # leaf node인지 판단 -> leaf node의 경우 node의 좌우 branch가 None임
-    if  self.current_node.left == None and self.current_node.right == None:
-        # 부모 노드보다 데이터가 작으면 왼쪽, 크면 오른쪽
-        if value < self.parent.value:
-            # 브랜치를 None
-            self.parent.left = None
-        else:
-            self.parent.right = None
-        del self.current_node
 
-    
-# case2 삭제할 node의 child node가 하나인 경우 -> 1) child가 left인 경우, 2) child가 right인 경우
-# 2. 삭제할 node가 parent의 left인지 right인지도 확인 해야함
+
+# Heap
+
+class Heap:
+    def __init__(self,data):
+        # 배열을 만들어주고 index가 1부터 시작하도록 index 0에는 None을 집어 넣어준다.
+        self.heap_array = list()
+        self.heap_array.append(None)
+        self.heap_array.append(data)
+heap = Heap(1)
+print(heap.heap_array)
+        
 
 
 
