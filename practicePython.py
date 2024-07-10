@@ -251,3 +251,5 @@ def kwarg(**kwagrs):
     print(kwagrs)
 kwarg(a=1, b='dic')
 
+# module
+

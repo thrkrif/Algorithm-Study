@@ -155,4 +155,9 @@ for del_num in delete_nums:
         print('delete Failed', del_num)
 
 
+# heap
 
+class Heap:
+    def __init__(self,data):
+        self.data = data
+        

@@ -613,10 +613,104 @@ class Heap:
         self.heap_array = list()
         self.heap_array.append(None)
         self.heap_array.append(data)
-heap = Heap(1)
-print(heap.heap_array)
-        
 
+    def move_up(self,inserted_idx):
+        # 삽입한 데이터의 index가 1보다 작거나 같으면 데이터가 없거나 root node라는 뜻이므로 move_up 할 필요가 없다.
+        if inserted_idx <= 1:
+            return False
+        # 자식 > 부모이면 move_up 한다.
+        parent_idx = inserted_idx // 2
+        if self.heap_array[inserted_idx] > self.heap_array[parent_idx]:
+            return True
+        else:
+            return False
+
+    def insert(self,data):
+        # 방어코드로 힙에 아무것도 들어가있지 않은 경우 data를 추가해준다.
+        if len(self.heap_array) == 0:
+            self.heap_array.append(None)
+            self.heap_array.append(data)
+            return True
+        
+        self.heap_array.append(data)
+
+         # 추가되는 데이터는 제일 마지막에 들어오게 된다.
+        inserted_idx = len(self.heap_array) - 1
+
+        # 자식 > 부모인 경우 계속 move_up은 True를 반환한다, while문 내에서는 부모와 자식의 데이터를 swap한다.
+        while self.move_up(inserted_idx):
+            parent_idx = inserted_idx // 2
+            self.heap_array[inserted_idx], self.heap_array[parent_idx] = self.heap_array[parent_idx], self.heap_array[inserted_idx]
+            inserted_idx = parent_idx
+        return True
+
+    def move_down(self, popped_idx):
+        left_child_popped_idx = popped_idx * 2
+        right_child_popped_idx = popped_idx * 2 + 1
+
+        # 자식이 없을 때
+        if left_child_popped_idx >= len(self.heap_array):
+            return False
+        
+        # 왼쪽 노드에 자식 있을 때
+        elif right_child_popped_idx >= len(self.heap_array):
+            if self.heap_array[popped_idx] < self.heap_array[left_child_popped_idx]:
+                return True
+        # 자식이 두명 있을 때
+        else:
+            if self.heap_array[left_child_popped_idx] > self.heap_array[right_child_popped_idx]:
+                if self.heap_array[left_child_popped_idx] > self.heap_array[popped_idx]:
+                    return True
+                else:
+                    return False
+            else:
+                if self.heap_array[right_child_popped_idx] > self.heap_array[popped_idx]:
+                    return True
+                else:
+                    return False
+            
+    def pop(self):
+        if len(self.heap_array) <= 1:
+            return None
+        # 데이터 덮어쓰기 하므로 별도로 삭제할 필요가 없다.
+        returned_data = self.heap_array[1]
+        self.heap_array[1] = self.heap_array[-1]
+        del self.heap_array[-1]
+        popped_idx = 1
+
+        while self.move_down(popped_idx):
+            left_child_popped_idx = popped_idx * 2
+            right_child_popped_idx = popped_idx * 2 + 1
+
+            # 왼쪽 노드에 자식 있을 때
+            if right_child_popped_idx >= len(self.heap_array):
+                if self.heap_array[popped_idx] < self.heap_array[left_child_popped_idx]:
+                    self.heap_array[popped_idx],self.heap_array[left_child_popped_idx] = self.heap_array[left_child_popped_idx], self.heap_array[popped_idx]
+                    popped_idx = left_child_popped_idx
+            else:
+                if self.heap_array[left_child_popped_idx] > self.heap_array[right_child_popped_idx]:
+                    if self.heap_array[left_child_popped_idx] > self.heap_array[popped_idx]:
+                        self.heap_array[popped_idx],self.heap_array[left_child_popped_idx] = self.heap_array[left_child_popped_idx], self.heap_array[popped_idx]
+                        popped_idx = left_child_popped_idx
+                else:
+                    if self.heap_array[right_child_popped_idx] > self.heap_array[popped_idx]:
+                        self.heap_array[popped_idx],self.heap_array[right_child_popped_idx] = self.heap_array[right_child_popped_idx], self.heap_array[popped_idx]
+                        popped_idx = right_child_popped_idx
+        return returned_data
+
+heap = Heap(15)
+heap.insert(10)
+heap.insert(8)
+heap.insert(5)
+heap.insert(4)
+heap.insert(20)
+print(heap.heap_array)
+heap.pop()
+print(heap.heap_array)
+heap.pop()
+print(heap.heap_array)
+heap.pop()
+print(heap.heap_array)
 
 
 
