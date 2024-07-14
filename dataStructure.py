@@ -713,13 +713,52 @@ heap.pop()
 print(heap.heap_array)
 
 
+# 버블 정렬
+
+def bubblesort(data):
+    for index in range(len(data) - 1): 
+        swap = False   
+        for index2 in range(len(data) - index -  1): 
+            if data[index2] > data[index2 + 1]:
+                data[index2], data[index2 + 1] = data[index2 + 1],data[index2] 
+                swap = True
+        if swap == False:
+            break
+    return data
+
+import random
+
+data_list = random.sample(range(100),10)
+print(bubblesort(data_list))
 
 
+# 삽입 정렬
 
+def insertion_sort(data):
+    for index in range(len(data) - 1):
+        for index2 in range(index + 1, 0, -1):
+            if data[index2] < data[index2 - 1]:
+                data[index2],data[index2 - 1] = data[index2 - 1],data[index2]
+            else:
+                break
 
+    return data
+data_list = random.sample(range(100),10)
+print(insertion_sort(data_list))
 
+# 선택 정렬
 
+def selection_sort(data):
+    for stand in range(len(data) - 1):
+        lowest = stand
+        for index in range(stand + 1, len(data)):
+            if data[lowest] > data[index]:
+                lowest = index
+            data[lowest],data[stand] = data[stand],data[lowest]
+    return data
 
+data_list = random.sample(range(100),10)
+print(selection_sort(data_list))
 
 
 

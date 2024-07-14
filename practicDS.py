@@ -1,4 +1,4 @@
-# 이진 탐색 트리 구현
+""" # 이진 탐색 트리 구현
 
 class Node:
     def __init__(self,value):
@@ -117,14 +117,13 @@ class NodeMgmt:
                 self.change_node.left = self.current_node.left
                 self.change_node.right = self.current_node.right
                 
-""" head = Node(1)
+head = Node(1)
 BST = NodeMgmt(head)
 BST.insert(2)
 BST.insert(5)
 
 print(BST.search(4))
-print(BST.search(5)) """
-
+print(BST.search(5)) 
 import random
 # 중복을 없애기 위해 집합으로 생성
 bst_nums = set()
@@ -153,11 +152,30 @@ while len(delete_nums) != 10:
 for del_num in delete_nums:
     if binary_tree.delete(del_num) == False:
         print('delete Failed', del_num)
+ """
 
+# 버블 정렬 직접 짜보기
+# 1. 앞,뒤 데이터 비교
+# 2. 바깥 로직 한번 돌 때 마다 맨 뒤 숫자가 정해짐
+# 3. 이미 정렬이 되어 있다면 더 이상 반복할 필요가 없으므로 반복 횟수를 줄여야 할 필요가 있음
 
-# heap
+# data는 list가 들어갈 것임
+def bubblesort(data):
+        # 바깥 로직은 위에 말한 2번이 한 번 수행되었다는 것을 의미함.
+        for index in range(len(data)-1):
+            swap = False # 3번 조건을 충족 시키기 위해 swap = True이면 정렬이 되어 있다는 의미임
+            # -index를 하는 이유도 마찬가지로 3번 조건, 바깥 로직이 한 번 돌때마다 맨 뒤에 숫자는 이미 정해지므로 비교할 필요가 없음
+            for index2 in range(len(data) - index - 1):
+                if data[index2] > data[index2 + 1]:
+                    # swap
+                    data[index2],data[index2 + 1] = data[index2 + 1],data[index2]
+                    swap = True
+            # 안쪽 반복문을 돌았는데도 False가 나온다면 리스트가 이미 정렬 되어있다는 것을 의미함 따라서 반복문을 빠져나옴.
+            if swap == False:
+                break
+        # return 값을 반환함
+        return data
 
-class Heap:
-    def __init__(self,data):
-        self.data = data
-        
+import random
+data_list = random.sample(range(100), 20)
+print(bubblesort(data_list))
