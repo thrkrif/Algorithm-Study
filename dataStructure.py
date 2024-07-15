@@ -761,5 +761,24 @@ data_list = random.sample(range(100),10)
 print(selection_sort(data_list))
 
 
+# 재귀
+
+def fac(n):
+    if n > 1:
+        return n * fac(n-1)
+    else:
+        return n
+
+print(fac(1))
+print(fac(5))
+
+def sum_list(data):
+    if len(data) == 1:
+        return data[0]
+    else:
+        return data[0] + sum_list(data[1:])
+
+data = [1,2,3,4,5,6,7,8,9,10]
+print(sum_list(data))
 
 
