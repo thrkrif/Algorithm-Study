@@ -781,4 +781,34 @@ def sum_list(data):
 data = [1,2,3,4,5,6,7,8,9,10]
 print(sum_list(data))
 
+for index in range(int(2.5)):
+    print(index)
 
+def func(n):
+    print(n)
+    if n == 1:
+        return n
+    if n % 2 == 1:
+        return func((3 * n) + 1)
+    else:
+        return func(int(n / 2))
+print(func(3))
+
+# recursive call을 이용한 피보나치, 스택에 중복된 데이터가 쌓인다.
+def fibonacci(n):
+    if n == 0:
+        return 0
+    elif n == 1:
+        return 1
+    return fibonacci(n-1) + fibonacci(n-2)
+
+print(fibonacci(6))
+
+dp = [0] * 101
+dp[1],dp[2],dp[3],dp[4],dp[5] = 1,1,1,2,2
+for index in range(6,101):
+    dp[index] = dp[index-1] + dp[index-5]
+
+print(dp[10])
+print(dp[6])
+print(dp[12])

@@ -179,3 +179,112 @@ def bubblesort(data):
 import random
 data_list = random.sample(range(100), 20)
 print(bubblesort(data_list))
+
+# recursive call
+
+def factorial(n):
+     if n <= 1:
+          return 1
+     else:
+          return n * factorial(n-1)
+
+print(factorial(5))
+
+# 숫자가 들어 있는 리스트가 주어졌을 때, 리스트의 합을 리턴하는 함수를 만드세요
+
+def sum_list(data):
+    if len(data) <= 1:
+        return data[0]
+    else:
+        return data[0] + sum_list(data[1:])
+data_list = [item for item in range(1,11)]
+print(sum_list(data_list))
+
+# 회문(palindrome)은 순서를 거꾸로 읽어도 제대로 읽은 것과 같은 단어와 문장을 의미함
+# 회문을 판별할 수 있는 함수를 재귀함수를 활용해서 만들어봅니다.
+
+def palindrome(string):
+     if len(string) <= 1:
+          return True
+     
+     if string[0] == string[-1]:
+          return palindrome(string[1:-1])
+     else:
+          return False
+
+print(palindrome("level"))
+print(palindrome("levol"))
+print(palindrome("ll"))
+
+""" 1, 정수 n에 대해
+2. n이 홀수이면 3 X n + 1 을 하고,
+3. n이 짝수이면 n 을 2로 나눕니다.
+4. 이렇게 계속 진행해서 n 이 결국 1이 될 때까지 2와 3의 과정을 반복합니다. """
+
+# 콜라츠 추측
+
+def recursive(n):
+    print(n)
+    if n == 1:
+        return n
+    if n % 2 == 1:
+         return recursive((3 * n) + 1)
+    elif n % 2 == 0:
+         return recursive(int(n / 2))
+
+print(recursive(30))
+
+def recursive2(n):
+    if n == 1:
+         return 1
+    elif n == 2:
+         return 2
+    elif n == 3:
+         return 4
+    
+    return recursive2(n-1) + recursive2(n-2) + recursive2(n-3)
+
+print(recursive2(5))
+
+# recursive2를 Dynamic Programming 으로 표현하면?
+
+dp = [0] * 101
+dp[1],dp[2],dp[3] = 1,2,4
+for index in range(4,101):
+     dp[index] = dp[index-1] + dp[index-2] + dp[index-3]
+
+print(dp[5])
+
+# DP
+
+# recursive를 이용하는 경우 시간이 오래걸린다. 왜냐면 실행할 때마다 이전의 값들을 다시 구해야함.
+def fibo(n):
+     if n == 0:
+          return 0
+     elif n == 1:
+          return 1
+     return fibo(n-1) + fibo(n-2)
+
+print(fibo(10))
+
+# 따라서 이전의 값들을 이용하는 문제는 DP로 푸는게 효율적임.
+
+def DpFibo(num):
+     cache = [0 for index in range(num+1)]
+     cache[1] = 1
+     for index in range(2, num+1):
+          cache[index] = cache[index-1] + cache[index-2]
+     return cache[num]
+
+print(DpFibo(10))
+
+# 2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.
+
+n = input(int())
+dp = [0] * 1001
+dp[1] = 1
+dp[2] = 2
+for index in range(3,1001):
+     dp[index] = dp[index-1] + dp[index-2]
+
+print(dp[n] % 10007)
