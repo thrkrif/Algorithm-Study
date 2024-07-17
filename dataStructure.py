@@ -804,11 +804,79 @@ def fibonacci(n):
 
 print(fibonacci(6))
 
-dp = [0] * 101
+""" dp = [0] * 101
 dp[1],dp[2],dp[3],dp[4],dp[5] = 1,1,1,2,2
 for index in range(6,101):
     dp[index] = dp[index-1] + dp[index-5]
 
 print(dp[10])
 print(dp[6])
-print(dp[12])
+print(dp[12]) """
+
+
+# split recursive?
+# 리스트를 재귀 호출을 이용하여 단일 원소가 될 때까지 나누어 보자
+def split(data):
+    if len(data) <= 1:
+        return data
+    
+    medium = int(len(data) / 2)
+    left = split(data[:medium])
+    right = split(data[medium:])
+
+    return left + right
+
+data_list = [10,6,7,1,3,9]
+print(split(data_list))
+
+print(5//2)
+
+# 퀵 정렬
+
+# 다음 리스트를 리스트 슬라이싱(예 [:2])을 이용해서 세 개로 짤라서 각 리스트 변수에 넣고 출력해보기
+data_list = [1,2,3,4,5]
+data1 = data_list[:2]
+data2 = data_list[2:3]
+data3 = data_list[3:]
+print(data1)
+print(data2)
+print(data3)
+
+# 다음 리스트를 맨 앞에 데이터를 기준으로 작은 데이터는 left 변수에, 그렇지 않은 데이터는 right 변수에 넣기
+data_list = [4,1,2,5,7]
+pivot = data_list[0]
+left,right = list(),list()
+for index in data_list:
+    if index < pivot:
+        left.append(index)
+    elif index > pivot:
+        right.append(index)
+    else:
+        False    
+print(left)
+print(right)
+
+# data_list 가 임의 길이일 때 리스트를 맨 앞에 데이터를 기준으로 작은 데이터는 left 변수에, 그렇지 않은 데이터는 right 변수에 넣기
+def example(data_list):
+    
+    if len(data_list) <= 1:
+        return data_list
+    
+    pivot = data_list[0]
+    left,right = list(),list()
+
+  
+    for index in data_list[1:]:
+        if index < pivot:
+            left.append(index)
+        else:
+            right.append(index)
+    
+    
+    return example(left) + [pivot] + example(right)
+
+import random
+data = random.sample(range(100),10)
+print(example(data))
+
+# 퀵 정렬 만들어보기 -> 재귀
