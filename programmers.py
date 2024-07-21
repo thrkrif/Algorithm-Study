@@ -235,4 +235,6 @@ def solution(arr, n):
 
 from random import *
 for i in range(10):
-    print(randint(98,100))
+    print(randint(1,100)) # 1~100 중에 무작위로 출력
+
+    

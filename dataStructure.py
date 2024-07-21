@@ -879,4 +879,18 @@ import random
 data = random.sample(range(100),10)
 print(example(data))
 
-# 퀵 정렬 만들어보기 -> 재귀
+# 퀵 정렬 lis comprehension 으로 만들어 보기
+
+def qsort_list(data_list):
+    if len(data_list) <= 1:
+        return data_list
+    
+    pivot = data_list[0]
+    left = [item for item in data_list[1:] if pivot > item]
+    right = [item for item in data_list[1:] if pivot <= item]
+
+    return qsort_list(left) + [pivot] + qsort_list(right)
+
+import random
+data = random.sample(range(100),10)
+print(qsort_list(data))

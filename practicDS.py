@@ -280,11 +280,87 @@ print(DpFibo(10))
 
 # 2×n 크기의 직사각형을 1×2, 2×1 타일로 채우는 방법의 수를 구하는 프로그램을 작성하시오.
 
-n = int(input())
+""" n = int(input())
 dp = [0] * 1001
 dp[1] = 1
 dp[2] = 2
 for index in range(3,1001):
      dp[index] = dp[index-1] + dp[index-2]
 
-print(dp[n] % 10007)
+print(dp[n] % 10007) """
+
+# merge sort
+
+# 어떤 데이터리스트가 있을 때 리스트를 앞뒤로 짜르는 코드 작성해보기 (일반화)
+def split(data_list):
+     medium = len(data_list) // 2
+     left = data_list[:medium]
+     right = data_list[medium:]
+     print(left,right)
+
+data_list = [1,2,3,4,5]
+split(data_list)
+
+# 다음 문장을 코드로 작성해보기 (merge함수는 아직은 없는 상태, 있다고만 가정)
+# * mergesplit 함수 만들기
+#   - 만약 리스트 갯수가 한개이면 해당 값 리턴
+#   - 그렇지 않으면, 리스트를 앞뒤, 두 개로 나누기
+#   - left = mergesplit(앞)
+#   - right = mergesplit(뒤)
+#   - merge(left, right)
+
+def mergeSplit(data_list):
+     if len(data_list) <= 1:
+          return data_list
+
+     medium = len(data_list) // 2
+     left = mergeSplit(data_list[:medium])
+     right = mergeSplit(data_list[medium:])
+     
+     return merge(left, right)
+
+def merge(left,right):
+    merged = list()
+    left_point, right_point = 0,0
+
+    # left/right 둘 다 있을 때
+    while len(left) > left_point and len(right) > right_point:
+            if left[left_point] > right[right_point]:
+                merged.append(right[right_point])
+                right_point += 1
+            else:
+                merged.append(left[left_point])
+                left_point += 1
+    # case2 - left 데이터만 남아있을 때
+    while len(left) > left_point:
+        merged.append(left[left_point])
+        left_point += 1
+        
+    # case3 - right 데이터만 남아있을 때
+    while len(right) > right_point:
+        merged.append(right[right_point])
+        right_point += 1
+
+    return merged
+
+import random
+data_list = random.sample(range(100),10)
+print(data_list)
+print(mergeSplit(data_list))
+
+# binary search
+
+
+
+# 순차 탐색
+
+def search(data_list,search):
+     index = 0
+     while len(data_list):
+          if data_list[index] == search:
+            return index
+          else:
+               index += 1
+
+data_list = [1,5,6,3,2]
+print(search(data_list, 2))
