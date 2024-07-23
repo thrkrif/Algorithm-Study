@@ -309,58 +309,351 @@ split(data_list)
 #   - right = mergesplit(뒤)
 #   - merge(left, right)
 
-def mergeSplit(data_list):
-     if len(data_list) <= 1:
-          return data_list
+# def mergeSplit(data_list):
+#      if len(data_list) <= 1:
+#           return data_list
 
-     medium = len(data_list) // 2
-     left = mergeSplit(data_list[:medium])
-     right = mergeSplit(data_list[medium:])
+#      medium = len(data_list) // 2
+#      left = mergeSplit(data_list[:medium])
+#      right = mergeSplit(data_list[medium:])
      
-     return merge(left, right)
+#      return merge(left, right)
 
-def merge(left,right):
-    merged = list()
-    left_point, right_point = 0,0
+# def merge(left,right):
+#     merged = list()
+#     left_point, right_point = 0,0
 
-    # left/right 둘 다 있을 때
-    while len(left) > left_point and len(right) > right_point:
-            if left[left_point] > right[right_point]:
-                merged.append(right[right_point])
-                right_point += 1
-            else:
-                merged.append(left[left_point])
-                left_point += 1
-    # case2 - left 데이터만 남아있을 때
-    while len(left) > left_point:
-        merged.append(left[left_point])
-        left_point += 1
+#     # left/right 둘 다 있을 때
+#     while len(left) > left_point and len(right) > right_point:
+#             if left[left_point] > right[right_point]:
+#                 merged.append(right[right_point])
+#                 right_point += 1
+#             else:
+#                 merged.append(left[left_point])
+#                 left_point += 1
+#     # case2 - left 데이터만 남아있을 때
+#     while len(left) > left_point:
+#         merged.append(left[left_point])
+#         left_point += 1
         
-    # case3 - right 데이터만 남아있을 때
-    while len(right) > right_point:
-        merged.append(right[right_point])
-        right_point += 1
+#     # case3 - right 데이터만 남아있을 때
+#     while len(right) > right_point:
+#         merged.append(right[right_point])
+#         right_point += 1
 
-    return merged
+#     return merged
 
-import random
-data_list = random.sample(range(100),10)
-print(data_list)
-print(mergeSplit(data_list))
+# import random
+# data_list = random.sample(range(100),10)
+# print(data_list)
+# print(mergeSplit(data_list))
 
 # binary search
 
+# def binary_search(data, search):
+#      print(data)
 
+#      if len(data) == 1 and data[0] == search:
+#           return True
+#      if len(data) == 1 and data[0] != search:
+#           return False
+     
+#      medium = len(data) // 2
+#      if search == data[medium]:
+#           return True
+#      else:
+#           if search < data[medium]:
+#                return binary_search(data[:medium],search)
+#           else:
+#                return binary_search(data[medium+1:],search)
+               
+# data_list = [1,5,7,2,10,99,20]
+# data_list.sort()
+# search = 21
+# print(binary_search(data_list,search))
 
 # 순차 탐색
 
-def search(data_list,search):
-     index = 0
-     while len(data_list):
-          if data_list[index] == search:
-            return index
-          else:
-               index += 1
+# def search(data_list,search):
+#     for index in range(len(data_list)):
+#          if data_list[index] == search:
+#               return index
+#     return -1
 
-data_list = [1,5,6,3,2]
-print(search(data_list, 2))
+# data_list = [1,5,6,3,2]
+# print(search(data_list, 2))
+
+# 백준 1920번 문제
+# import random
+
+# n = int(input())
+# data1 = random.sample(n)
+# m = int(input())
+# data2 = random.sample(m)
+
+# print(data1)
+# print(data2)
+
+
+# Queue -> FIFO
+
+# a = list()
+
+# def inq(data):
+#      a.append(data)
+
+# def deq():
+#      print(a[0])
+#      del a[0]
+     
+# for i in range(10):
+#      inq(i)
+
+# print(a)
+# deq()
+# print(a[0])
+
+# a = [1,23,4]
+# a.pop(-1)
+# a.pop(-2)
+# print(a)
+
+# BFS
+
+graph = dict()
+
+graph['A'] = ['B', 'C']
+graph['B'] = ['A', 'D']
+graph['C'] = ['A', 'G', 'H', 'I']
+graph['D'] = ['B', 'E', 'F']
+graph['E'] = ['D']
+graph['F'] = ['D']
+graph['G'] = ['C']
+graph['H'] = ['C']
+graph['I'] = ['C', 'J']
+graph['J'] = ['I']
+
+def BFS(graph, start_node):
+     visited, need_visit = list(), list()
+     need_visit.append(start_node)
+     count = 0
+
+     while need_visit:
+        count += 1
+        node = need_visit.pop(0)
+        if node not in visited:
+             visited.append(node)
+             need_visit.extend(graph[node])
+             
+     print(count)
+
+     return visited
+
+print(BFS(graph, 'A'))
+
+def DFS(graph, start_node):
+     visited, need_visit = list(), list()
+     need_visit.append(start_node)
+     count = 0
+
+     while need_visit:
+          count += 1
+          node = need_visit.pop()
+
+          if node not in visited:
+               visited.append(node)
+               need_visit.extend(graph[node])
+
+     print(count)    
+     return visited
+
+print(DFS(graph, 'A'))
+
+
+# # 탐욕 알고리즘
+
+# coin1 = 500
+# coin2 = 100
+# coin3 = 50
+# coin4 = 1
+
+# def greed(money):
+#      print(money)
+#      c1 = money // coin1
+#      money -= coin1 * c1
+#      print(money)
+#      c2 = money // coin2
+#      money -= coin2 * c2
+#      print(money)
+#      c3 = money // coin2
+#      money -= coin3 * c3
+#      print(money)
+#      c4 = money // coin2
+#      money -= coin4 * c4
+#      print(money)
+
+# print(greed(4720))     
+# print(greed(5000))   
+
+# coin_list = [1,50,100,500]
+
+# def greedy(money, coin_list):
+#      coin_list.sort(reverse=True)
+#      total_coin_count = 0
+#      details = list()
+#      for coin in coin_list:
+#           coin_num = money // coin
+#           total_coin_count += coin_num
+#           money -= coin * coin_num
+#           details.append([coin,coin_num])
+          
+
+#      return total_coin_count,details
+
+# print(greedy(4720,coin_list))
+
+
+# data_list = [(10, 10), (15, 12), (20, 10), (25, 8), (30, 5)]
+# def get_max_value(data_list, capacity):
+#      data_list = sorted(data_list, key=lambda x: x[1]/x[0], reverse=True)
+#      total_value = 0
+#      details = list()
+
+#      for data in data_list:
+#           if capacity - data[0] >= 0:
+#                capacity -= data[0]
+#                total_value += data[1]
+#                details.append([data[0],data[1],1])
+#           else:
+#                fraction = capacity / data[0]
+#                capacity -= data[0] * fraction
+#                total_value += fraction * data[1]
+#                details.append([data[0],data[1],fraction])
+#      return details
+
+# print(get_max_value(data_list,30))
+
+
+
+# # 탐욕 알고리즘 실전 코딩
+
+# minute = [3,1,4,3,2]
+# # minute.sort()
+# # print(minute)
+
+# def greedy1(data_list):
+#      data_list.sort()
+#      curminute = 0
+#      total_minute = 0
+     
+#      for time in data_list:
+#             curminute += time
+#             total_minute += curminute
+
+#      return total_minute
+
+# print(greedy1(minute))
+
+# N = 5
+# N_list = [3,1,4,3,2]
+
+# def greedy2(data_list):
+#      minimum = 0
+#      data_list.sort()
+
+#      for index in range(N):
+#           for index2 in range(index+1):
+#                minimum += data_list[index2]
+    
+#      return minimum
+
+# print(greedy2(N_list))
+
+
+# # -> greedy1이 더 좋은 알고리즘이다.
+# # greedy1 -> nlogn(sort) + n(반복문) = nlogn
+# # greedy2 -> nlogn(sort) + n^2(반복문) = n^2
+
+
+
+# # sort 없이 정렬 해보기
+
+# # data = [5,3,2,4,1]
+
+# # def sort(data):
+# #      sort_list = list()
+# #      data_copy = data[:]
+
+# #      while data_copy:
+# #           min_data = min(data_copy)
+# #           sort_list.append(min_data)
+# #           data_copy.remove(min_data)
+# #           print(data_copy)
+          
+    
+# #      return sort_list
+
+# # print(sort(data))
+
+
+# 탐욕 알고리즘 복습
+
+coin = [1,50,100,500]
+
+def greedy1(coin,money):
+     coin.sort(reverse=True)
+     total_coinnum = 0
+     details = list()
+     
+     for coin in coin:
+          if money >= 0:   # 이 조건이 있어야 할 것 같다. -> (x) 없어도 될 듯??  계산해도 항상 0보다 크거나 같음 
+            coin_num = money // coin
+            total_coinnum += coin_num
+            money -= coin * coin_num
+            details.append([coin,coin_num])
+     return total_coinnum,details
+
+print(greedy1(coin,4720))
+     
+data_list = [(10, 10), (15, 12), (20, 10), (25, 8), (30, 5)]
+
+def greedy2(data_list, capacity):
+     data_list = sorted(data_list, key=lambda x: x[1] / x[0], reverse = True)
+     total_value = 0
+     detalis = list()
+
+     for data in data_list:
+          if capacity - data[0] >= 0:
+            capacity -= data[0]
+            total_value += data[1]
+            detalis.append([data[0],data[1],1])
+          
+          else:
+               fraction = capacity / data[0]
+               capacity -= fraction * data[0]
+               total_value += data[1] * fraction
+               detalis.append([data[0],data[1],fraction])
+     
+     return total_value,detalis
+
+print(greedy2(data_list, 30))
+
+# N = int(input().strip())
+# data_list = list(map(int, input.strip().split()))
+
+data_list = [3,1,4,3,2]
+
+def greedy3(data_list):
+     data_list.sort()
+     total = 0
+     current_total = 0
+
+     for data in data_list:
+          current_total += data
+          total += current_total
+
+     return total
+
+print(greedy3(data_list))
+        
+            

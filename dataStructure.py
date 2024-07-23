@@ -879,7 +879,7 @@ import random
 data = random.sample(range(100),10)
 print(example(data))
 
-# 퀵 정렬 lis comprehension 으로 만들어 보기
+# 퀵 정렬 list comprehension 으로 만들어 보기
 
 def qsort_list(data_list):
     if len(data_list) <= 1:
@@ -894,3 +894,31 @@ def qsort_list(data_list):
 import random
 data = random.sample(range(100),10)
 print(qsort_list(data))
+
+
+# binary search
+def binary_search(data,search):
+    print(data)
+    if len(data) == 1:
+        if data[0] == search:
+            return 1
+        else:
+            return 0
+    if len(data) == 0:
+        return 0
+    medium = len(data) // 2
+    if data[medium] == search:
+        return 1
+    else:
+        if data[medium] > search:
+            return binary_search(data[:medium],search)
+        else:
+            return binary_search(data[medium+1:],search)
+
+import random
+data = random.sample(range(100),10)
+print(data)
+data.sort()
+print(data)
+
+binary_search(data,86)
