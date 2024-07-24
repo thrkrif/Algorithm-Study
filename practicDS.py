@@ -656,4 +656,58 @@ def greedy3(data_list):
 
 print(greedy3(data_list))
         
-            
+
+# 다익스트라 알고리즘
+
+import heapq
+
+queue = []
+
+heapq.heappush(queue,[3,'A'])
+heapq.heappush(queue,[5,'B'])
+heapq.heappush(queue,[4,'C'])
+heapq.heappush(queue,[1,'D'])
+print(queue)
+
+for index in range(len(queue)):
+     print(heapq.heappop(queue))
+
+mygraph = {
+    'A': {'B': 8, 'C': 1, 'D': 2},
+    'B': {},
+    'C': {'B': 5, 'D': 2},
+    'D': {'E': 3, 'F': 5},
+    'E': {'F': 1},
+    'F': {'A': 5}
+}
+
+import heapq
+
+def mExtra(graph, start):
+    #  거리 저장 배열
+     distances = {node: float("inf") for node in graph}
+     distances[start] = 0
+    #  우선순위 큐 , 우선순위를 먼저 작성해야 하므로 distnacese[start], start 순으로 작성함
+     queue = []
+     heapq.heappush(queue, [distances[start], start])
+
+    #  우선순위 큐가 존재할 때 까지 반복
+     while queue:
+        # 큐에서 추출
+        current_distance, current_node = heapq.heappop(queue)
+
+        if distances[current_node] < current_distance:
+            continue
+        
+        # dict[key].items() 는 value 추출
+        for adjcent, weight in graph[current_node].items():
+            distance = current_distance + weight
+
+            if distance < distances[adjcent]:
+                 distances[adjcent] = distance
+                 heapq.heappush(queue, [distances[adjcent], adjcent])
+    
+     return distances
+
+print(mExtra(mygraph, 'A'))
+                 
