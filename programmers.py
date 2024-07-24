@@ -222,19 +222,80 @@ for index in num_str:
     sum += n
 print(sum) """
 
-# 뒤에서 5등 위로
-def solution(num_list):
-    num_list.sort()
-    return num_list[5:]
+# # 뒤에서 5등 위로
+# def solution(num_list):
+#     num_list.sort()
+#     return num_list[5:]
 
-# 배열의 길이에 따라 다른 연산하기
-def solution(arr, n):
-    if len(arr) % 2 == 1:
-        for i in range(len(arr)):
-            arr[::2] += 27
+# # 배열의 길이에 따라 다른 연산하기
+# def solution(arr, n):
+#     if len(arr) % 2 == 1:
+#         for i in range(len(arr)):
+#             arr[::2] += 27
 
-from random import *
-for i in range(10):
-    print(randint(1,100)) # 1~100 중에 무작위로 출력
+# from random import *
+# for i in range(10):
+#     print(randint(1,100)) # 1~100 중에 무작위로 출력
 
+# # 배열 비교하기
+# def solution(arr1, arr2):
+#     sum1,sum2 = 0,0
+
+#     if len(arr1) > len(arr2):
+#         return 1
+#     elif len(arr1) < len(arr2):
+#         return -1
+#     # len(arr1) == len(arr2)
+#     else:
+#         for i in range(len(arr1)):
+#             sum1 += arr1[i]
+#             sum2 += arr2[i]
+#         if sum1 > sum2:
+#             return 1
+#         elif sum1 < sum2:
+#             return -1
+#         else:
+#             return 0
+        
+# 배열의 원소만큼 추가하기
+def solution(arr):
+    answer = []
     
+    for i in arr:
+        for data in range(i):
+            answer.append(i)
+
+    return answer
+
+arr = [5,1,4]
+print(solution(arr))
+
+# 배열의 원소만큼 추가하기2
+# 1에서는 반복문을 두 번 이용헤서 시간이 오래걸린다.
+def solution(arr):
+    answer = []
+    
+    for i in arr:
+        answer += [i] * i
+
+    return answer
+
+arr = [5,1,4]
+print(solution(arr))
+
+# 문자열 바꾸기
+def solution(rny_string):
+    answer = rny_string.replace('m', 'rn')
+    return answer
+
+# 문자열 바꿔서 찾기
+def solution(myString, pat):
+    
+
+
+    if pat in myString:
+        return 1
+    else:
+        return 0
+    
+
