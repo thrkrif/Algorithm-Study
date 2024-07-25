@@ -289,13 +289,117 @@ def solution(rny_string):
     return answer
 
 # 문자열 바꿔서 찾기
-def solution(myString, pat):
+# def solution(myString, pat):
     
+#     translate_string = myString.translate(str.maketrans("AB","BA"))
+    
+#     if pat in translate_string:
+#         return 1
+#     else:
+#         return 0
+
+# # 번외로 pat을 바꾸기
+# def solution2(myString, pat):
+
+#     return  int(''.join(["B" if i == 'A' else 'B' for i in pat]) in myString)
 
 
-    if pat in myString:
+# h = "AAABBB"
+# # table = str.maketrans("AB","BA")
+# table = h.maketrans("AB","BA")  # 출력 결과로 딕셔너리가 나온다. translate와 함께 사용한다.
+# # h = h.translate(table)
+# print(table)
+
+# # 소문자로 바꾸기
+# def solution(myString):
+#     myString = myString.lower()
+#     return myString
+
+# # 대문자로 바꾸기
+# def solution(myString):
+#     answer = myString.upper()
+#     return answer
+
+# 원하는 문자열 찾기
+def solution(myString, pat):
+    myString_copy = myString.lower()
+    pat_copy = pat.lower()
+
+    if pat_copy in myString_copy:
         return 1
     else:
         return 0
     
+# 공백으로 구분하기
+def solution(my_string):
+    answer = my_string.split('')
+    return answer
 
+# 특정한 문자를 대문자로 바꾸기
+def solution(my_string, alp):
+    return ''.join([i.upper() if i == alp else i for i in my_string])
+
+# 특정한 문자를 대문자로 바꾸기 replace가 더 났다.
+def solution(my_string, alp):
+    return my_string.replace(alp, alp.upper())
+
+# 배열에서 문자열 대소문자 변환하기
+def solution(strArr):
+    for i in range(len(strArr)):
+        if i % 2 == 0:
+            strArr[i] = strArr[i].lower()
+        else:
+            strArr[i] = strArr[i].upper()
+    
+    return strArr
+
+# 길이에 따른 연산
+
+def solution(num_list):
+    sum1,sum2 = 0,1
+    if len(num_list) >= 11:
+        for i in range(len(num_list)):
+            sum1 += num_list[i]
+        return sum1    
+    else:
+        for i in range(len(num_list)):
+            sum2 *= num_list[i]
+        return sum2
+
+# A 강조하기
+
+def solution(myString):
+    return myString.lower().replace("a","A")
+
+# 조건에 맞게 수열 변환하기 1
+
+def solution(arr):
+    answer = []
+    for i in arr:
+        if i >= 50 and  i % 2 == 0:
+            answer.append(i/2)
+        elif i <50 and i % 2 == 1:
+            answer.append(i*2)
+        else:
+            answer.append(i)
+    return answer
+
+# n보다 커질 때까지 더하기
+
+def solution(numbers, n):
+    sum = 0
+    for i in numbers:
+        sum += i
+        if sum > n:
+            return sum
+    
+    return 0
+
+# 할 일 목록
+def solution(todo_list, finished):
+    answer = []
+    for i in range(len(todo_list)):
+        if finished[i] == False:
+            answer.append(todo_list[i])
+
+    return answer
