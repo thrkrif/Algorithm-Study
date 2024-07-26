@@ -403,3 +403,85 @@ def solution(todo_list, finished):
             answer.append(todo_list[i])
 
     return answer
+
+# 공백으로 구분하기 2
+def solution(my_string):
+    answer = my_string.split()
+    return answer
+
+# 5명씩
+def solution(names):
+    answer = names[::5]
+    return answer
+
+# n개 간격의 원소들
+def solution(num_list, n):
+    answer = num_list[::n]
+    return answer
+
+# n 번째 원소까지
+def solution(num_list, n):
+    answer = num_list[:n]
+    return answer
+
+# 순서 바꾸기
+def solution(num_list, n):
+    answer = num_list[n:] + num_list[:n]
+    return answer
+
+# n 번째 원소부터
+def solution(num_list, n):
+    answer = num_list[n-1:]
+    return answer
+
+# 첫 번째로 나오는 음수
+def solution(num_list):
+    for x,y in enumerate(num_list):
+        if y < 0:
+            return x
+    return -1
+
+# 카운트 다운
+def solution(start_num, end_num):
+    answer = []
+    for i in range(start_num,end_num,-1):
+        answer.append(i)
+    return answer
+
+# 배열 만들기 1
+def solution(n, k):
+    
+    return [i for i in range(k,n+1,k)]
+
+# 접두사인지 확인하기
+# index 0 부터 확인
+def solution(my_string, is_prefix):
+        for i in len(is_prefix):
+            if my_string[i] == is_prefix[i]:
+                return 1
+        return 0
+
+# 문자열의 앞의 n글자
+def solution(my_string, n):
+    
+    item  = [my_string[i] for i in range(n)]
+    
+    return ''.join(item)
+
+# 문자열 앞의 n글자 훨씬 더 쉬운 버전 / 문자열도 슬라이싱 가능함
+def solution(my_string, n):
+    return my_string[:n]
+
+
+# 문자열의 뒤의 n글자
+def solution(my_string, n):
+    return my_string[-n:]
+
+# 부분 문자열 이어 붙여 문자열 만들기
+def solution(my_strings, parts):
+    answer = ''
+    for i in range(len(my_strings)):
+        for s,e in parts:
+            answer += my_strings[s:e+1]
+
+    return answer

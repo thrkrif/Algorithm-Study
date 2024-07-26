@@ -257,4 +257,19 @@ b = ['a','b','c']
 c = a,b
 print(c)
 
+mystring = " i  love you "
+mystring = mystring.split()
+print(mystring)
+
+for i in range(10,3,-1):
+    print(i)
+
+
+def solution(my_string, n):
+    
+    item  = [my_string[i] for i in range(n)]
+    
+    return ''.join(item)
+
+print(solution("abcdefg", 4))
 
