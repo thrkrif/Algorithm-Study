@@ -477,11 +477,25 @@ def solution(my_string, n):
 def solution(my_string, n):
     return my_string[-n:]
 
-# 부분 문자열 이어 붙여 문자열 만들기
-def solution(my_strings, parts):
-    answer = ''
-    for i in range(len(my_strings)):
-        for s,e in parts:
-            answer += my_strings[s:e+1]
+# # 부분 문자열 이어 붙여 문자열 만들기
+# def solution(my_strings, parts):
+#     answer = ''
+#     for i in range(len(my_strings)):
+#         for s,e in parts:
+#             answer += my_strings[s:e+1]
 
-    return answer
+#     return answer
+
+# 글자 이어 붙여 문자열 만들기
+def solution(my_string, index_list):
+    answer = [my_string[i] for i in index_list]
+    return ''.join(answer)
+
+# 배열의 원소 삭제하기
+def solution(arr, delete_list):
+    
+    for i in delete_list:
+        if i in arr:
+            arr.remove(i)
+
+    return arr

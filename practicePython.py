@@ -273,3 +273,23 @@ def solution(my_string, n):
 
 print(solution("abcdefg", 4))
 
+
+mystring = "oxooxoxxox"
+print(mystring.split('x'))
+result = mystring.split('x')
+print(result)
+# for i in range(len(result)):
+#     item = len(result[i])
+#     print(item)
+
+item = [len(result[i]) for i in range(len(result))]
+print(item)
+
+a = [293, 1000, 395, 678, 94]
+d = [94, 777, 104, 1000, 1, 12]
+
+def solution(arr, delete_list):
+
+    return [i for i in arr if i not in delete_list]
+
+print(solution(a,d))
