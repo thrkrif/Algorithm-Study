@@ -293,3 +293,40 @@ def solution(arr, delete_list):
     return [i for i in arr if i not in delete_list]
 
 print(solution(a,d))
+
+# a = "43 + 12"
+# b = a.split()
+# print(b)
+# print(b[0],b[1],b[2])
+
+print('a' < 'b')
+print([1,23] + [3,4,5])
+
+a = "12345"
+for i in a:
+    print(i)
+
+arr = [[1,2],[2,1]]
+for i,j in arr:
+    print(i,j)
+
+a = "ihrhbakrfpndopljhygc"
+print(a[::4])
+
+mystring = "axbxcxdx"
+print(mystring.split('x'))
+
+mystring2 = "dxccxbbbxaaaa"
+answer = mystring2.split('x')
+answer.sort()
+print(answer)
+
+
+a = [1,2,3,4,5]
+print(a[:3])    # slice는 마지막 index 포함 x
+a.append(6) 
+print(a)
+
+date1 = [2023, 10, 10]
+date2 = [2024, 1, 1]
+print(date1 > date2)

@@ -499,3 +499,163 @@ def solution(arr, delete_list):
             arr.remove(i)
 
     return arr
+
+# 카운트 업
+def solution(start_num, end_num):
+    answer = []
+    count = 0
+    for i in range(end_num - start_num + 1):
+        answer.append(start_num + count)
+        count += 1
+    return answer
+
+# 부분 문자열
+def solution(str1, str2):
+    
+    return 1 if str1 in str2 else 0
+
+# 부분 문자열2
+def solution(str1, str2):
+    
+    return int(str1 in str2)
+
+
+# 홀수 vs 짝수
+def solution(num_list):
+    odd = num_list[::2]
+    even = num_list[1::2]
+    
+    return sum(odd) if sum(odd) > sum(even) else sum(even)
+
+# 홀수 vs 짝수2
+def solution(num_list):
+    odd = num_list[::2]
+    even = num_list[1::2]
+    
+    return max(sum(odd), sum(even))
+
+# 정수 찾기
+def solution(num_list, n):
+    
+    return int(n in num_list)
+
+# 조건에 맞게 수열 변환하기 3
+def solution(arr, k):
+    answer = [i * k if k % 2 == 1 else i + k for i in arr]
+    return answer
+
+# 간단한 식 계산하기
+def solution(binomial):
+    a = binomial.split()
+    num1, num2 = int(a[0]), int(a[2])
+    if a[1] == '+':
+        return num1 + num2
+    elif a[1] == '-':
+        return num1 - num2
+    elif a[1] == '*':
+        return num1 * num2
+    
+# # l로 만들기 안되는 이유
+def solution(myString):
+    for item in myString:
+        if item < 'l':
+            myString.replace(item, 'l')
+    return myString
+
+# l로 만들기
+def solution(myString):
+        
+    return ''.join(['l' if i < 'l' else i for i in myString])
+        
+# 가까운 1 찾기
+def solution(arr, idx):
+
+    for index in range(len(arr)):
+        if idx <= index and arr[index] == 1:
+            return index
+
+    return -1
+
+# 배열 만들기 3
+def solution(arr, intervals):
+    answer = []
+    for i,j in intervals:
+        answer += arr[i:j+1]
+    return answer
+
+# 9로 나눈 나머지
+def solution(number):
+    answer = 0
+    for i in number:
+        answer += int(i)
+    return answer % 9
+
+# 수 조작하기 2
+def solution(numLog):
+    answer = ''
+    for i in range(len(numLog)-1):
+        if numLog[i] == numLog[i+1] - 1:
+            answer += 'w'
+        elif numLog[i] == numLog[i+1] + 1:
+            answer += 's'
+        elif numLog[i] == numLog[i+1] - 10:
+            answer += 'd'
+        elif numLog[i] == numLog[i+1] + 10:
+            answer += 'a'
+        else:
+            return False
+    return answer
+
+# 콜라츠 수열 만들기
+def solution(n):
+    answer = []
+    
+    while n != 1:
+        if n % 2 == 0:
+            answer.append(n)
+            n = n//2
+        else:
+            answer.append(n)
+            n = 3 * n + 1
+    answer.append(n)
+
+    return answer
+
+# 문자열 잘라서 정렬하기
+def solution(myString):
+    answer = myString.split('x')
+    answer = [i for i in answer if i ]
+    answer.sort()
+    return answer
+
+# 리스트 자르기
+def solution(n, slicer, num_list):
+    if n == 1:
+        return num_list[0:slicer[1] + 1]
+    elif n == 2:
+        return num_list[slicer[0]:]
+    elif n == 3:
+        return num_list[slicer[0]:slicer[1] + 1]
+    elif n == 4:
+        return num_list[slicer[0]:slicer[1] + 1:slicer[2]]
+    else:
+        return -1
+    
+# 날짜 비교하기
+def solution(date1, date2):
+    if date1[0] < date2[0]:
+        return 1
+    elif date1[0] == date2[0]:
+        if date1[1] < date2[1]:
+            return 1
+        elif date1[1] == date2[1]:
+            if date1[2] < date2[2]:
+                return 1
+    return 0
+
+# 글자 지우기
+def solution(my_string, indices):
+    answer = my_string.split('')
+    for i in indices:
+        del answer[i]
+    return ''.join(answer)
