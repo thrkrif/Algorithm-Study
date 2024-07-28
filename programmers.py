@@ -659,3 +659,42 @@ def solution(my_string, indices):
     for i in indices:
         del answer[i]
     return ''.join(answer)
+
+# 커피 심부름
+def solution(order):
+    money = 0
+    for i in order:
+        if i == "iceamericano"  or i == "americanoice" or  i == "americano" or i == "anything":
+            money += 4500
+        elif i == "hotamericano" or i == "americanohot":
+            money += 4500
+        else:
+            money += 5000
+    
+    return money
+
+# 2의 영역
+def solution(arr):
+    answer = [i for i in range(len(arr)) if arr[i] == 2]   # arr[i] == 2 인 i의 index들을 추출
+    if len(answer) == 0:
+        return [-1]
+    elif len(answer) == 1:
+        return [arr[answer[0]]]
+    else:
+        return arr[answer[0]:answer[-1] + 1]
+    
+# 1로 만들기 --> 실행시간 초과로 실패
+def solution(num_list):
+    count = 0
+    for i in num_list:
+        while i != 1:
+            i // 2
+            count += 1
+    return count
+
+# 문자열 뒤집기
+def solution(my_string, s, e):
+    
+    copy = list(my_string[:s]) + list(my_string[s:e+1]).reverse() + list(my_string[e+1:])
+    answer = ''.join(copy)
+    return answer

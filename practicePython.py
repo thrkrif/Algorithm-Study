@@ -330,3 +330,6 @@ print(a)
 date1 = [2023, 10, 10]
 date2 = [2024, 1, 1]
 print(date1 > date2)
+
+myStr = "baconlettucetomato".split('abc')
+print(myStr)
