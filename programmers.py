@@ -695,6 +695,57 @@ def solution(num_list):
 # 문자열 뒤집기
 def solution(my_string, s, e):
     
-    copy = list(my_string[:s]) + list(my_string[s:e+1]).reverse() + list(my_string[e+1:])
-    answer = ''.join(copy)
+    return my_string[:s] + my_string[s:e+1][::-1] + my_string[e+1:]
+
+# 배열 만들기 5
+def solution(intStrs, k, s, l):
+    answer = []
+    for i in intStrs:
+        if int(i[s:s+l]) > k:
+            answer.append(int(i[s:s+l]))
     return answer
+
+# 간단한 논리 연산
+def solution(x1, x2, x3, x4):
+    
+    return (x1 or x2) and (x3 or x4)
+
+# 두 수의 합
+def solution(a, b):
+    
+    return str(int(a) + int(b))
+
+# qr code
+def solution(q, r, code):
+    result = [code[i] for i in range(len(code)) if i % q == r]
+    
+    return ''.join(result)
+
+# 부분 문자열 이어 붙여 문자열 만들기
+def solution(my_strings, parts):
+    answer = ''
+    for i in range(len(my_strings)):
+        answer += my_strings[i][parts[i][0]:parts[i][1]+1]
+
+    return answer
+
+# 수열과 구간 쿼리 2  --> 모르겠음..
+# def solution(arr, queries):
+#     for (s,e,k) in queries:
+#         answer = [min(i) if i > k else -1 for i in arr[s:e+1]]
+    
+#     return answer
+
+# 수열과 구간 쿼리 3
+def solution(arr, queries):
+    
+    for i,j in queries:
+        arr[i],arr[j] = arr[j],arr[i]
+    return arr
+
+# 배열 만들기 2
+def solution(l, r):
+    answer = [i for i in range(l,r+1) if all(c in '05' for c in str(i))]
+
+    return answer if answer else [-1]
+  

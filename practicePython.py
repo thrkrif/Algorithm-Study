@@ -333,3 +333,16 @@ print(date1 > date2)
 
 myStr = "baconlettucetomato".split('abc')
 print(myStr)
+
+a = "12345"
+print(int(a))
+
+print(a[::1])
+print(bool(a.index('1')))
+
+queries = [[0, 3],[1, 2],[1, 4]]
+for i,j in queries:
+    print(i,j)
+
+a = [i for i in range(1,5)]
+print(a)
