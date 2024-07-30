@@ -748,4 +748,100 @@ def solution(l, r):
     answer = [i for i in range(l,r+1) if all(c in '05' for c in str(i))]
 
     return answer if answer else [-1]
-  
+
+# 배열 만들기 4
+def solution(arr):
+    stk = []
+    i = 0
+    while i < len(arr):
+        if len(stk) == 0:
+            stk.append(arr[i])
+            i += 1
+        else:
+            if stk[-1] < arr[i]:
+                stk.append(arr[i])
+                i += 1
+            else:
+                del stk[-1]
+    return stk
+
+# 접두사인지 확인하기
+def solution(my_string, is_prefix):
+        result = []
+        for i in range(len(my_string)):
+            result.append(my_string[0:i])
+        if is_prefix in result:
+            return 1
+        else:
+            return 0
+
+# 접미사인지 확인하기 1. endswith() 함수 이용
+def solution(my_string, is_suffix):
+    
+    return int(my_string.endswith(is_suffix))
+
+# 접미사인지 확인하기
+def solution(my_string, is_suffix):
+    result = []
+    my_string = my_string[::-1]
+    for i in range(len(my_string)):
+        result.append(my_string[0:i])
+    if is_suffix in result:
+        return 1
+    else:
+        return 0
+    
+# 접미사 배열
+def solution(my_string):
+    answer = []
+    for i in range(len(my_string)):
+        answer.append(my_string[i:])
+    answer.sort()
+    return answer
+
+# 꼬리 문자열
+def solution(str_list, ex):
+    answer = ''
+    for i in range(len(str_list)):
+        if ex not in str_list[i]:
+            answer += str_list[i]
+    return answer
+
+# 부분 문자열인지 확인하기
+def solution(my_string, target):
+    
+    if target in my_string:
+        return 1
+    return 0
+
+# 0 떼기
+def solution(n_str):
+    
+    for i in range(len(n_str)):
+        if n_str[i] != '0':
+            return n_str[i:]
+        
+# 배열의 길이에 따라 다른 연산하기
+def solution(arr, n):
+    
+    if len(arr) % 2 == 0:
+        for i in range(1,len(arr),2):
+            arr[i] += n
+    else:
+        for i in range(0,len(arr),2):
+            arr[i] += n
+    return arr
+
+# ad 제거하기
+def solution(strArr):
+    answer = [i for i in strArr if 'ad' not in i]
+    return answer
+
+# 특별한 이차원 배열 1
+def solution(n):
+    answer = [[]]
+    for i in range(n):
+        for j in range(n):
+            
+
+    return answer

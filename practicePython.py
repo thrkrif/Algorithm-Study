@@ -346,3 +346,10 @@ for i,j in queries:
 
 a = [i for i in range(1,5)]
 print(a)
+
+a = ["abc", "def", "ghi"]
+answer = ''
+for i in range(len(a)):
+    if 'ef' not in a[i]:
+        answer += a[i]
+print(answer)
