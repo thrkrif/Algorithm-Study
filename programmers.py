@@ -905,3 +905,11 @@ def solution(arr, flag):
         else:
             del answer[-arr[i]:]
     return answer
+
+# 문자열이 몇 번 등장하는지 세기
+def solution(myString, pat):
+    count = 0
+    for i in range(len(myString)-len(pat)+1):
+        if myString[i:i+len(pat)] == pat:
+            count += 1
+    return count

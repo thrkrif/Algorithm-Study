@@ -364,8 +364,16 @@ print(arr)
 
 
 arr = [1,2,3,4,5]
+print(arr)
 # arr.append(a[0])
 # arr.append(a[0])
 # del arr[-3:]
-arr.extend(arr[0] *((arr[0])* 3))
-print(arr)
+# arr.extend(arr[0] *((arr[0])* 3))
+# print(arr)
+
+# st = "AAAA1aaaa"
+# print(st)
+# c = st.split('1')
+# print(c)
+# b = c.pop()
+# print(b)
