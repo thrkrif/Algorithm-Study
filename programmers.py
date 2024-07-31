@@ -839,9 +839,69 @@ def solution(strArr):
 
 # 특별한 이차원 배열 1
 def solution(n):
-    answer = [[]]
+    answer = []
     for i in range(n):
+        answer.append([])
         for j in range(n):
-            
+            if i == j:
+                answer[i].append(1)
+            else:
+                answer[i].append(0)
 
+    return answer
+
+# 주사위 게임 1
+def solution(a, b):
+    if a % 2 == 1 and b % 2 == 1:
+        return a*a + b*b
+    elif a % 2 == 0 and b % 2 == 0:
+        return abs(a-b)
+    else:
+        return 2 * (a + b)
+    
+# 특별한 이차원 배열 2        --> 왜 오답이 나올까?
+def solution(arr):
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            if arr[i][j] == arr[j][i]:
+                return 1
+    return 0
+
+# 특별한 이차원 배열 2
+def solution(arr):
+    answer = []
+    for i in range(len(arr)):
+        for j in range(len(arr)):
+            if arr[i][j] == arr[j][i]:
+                answer.append(1)
+            else:
+                answer.append(0)
+    if 0 in answer:
+        return 0
+    else:
+        return 1
+    
+# 이차원 배열 대각선 순회하기
+def solution(board, k):
+    answer = 0
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            if i + j <= k:
+                answer += board[i][j]
+    return answer
+
+# 세로 읽기
+def solution(my_string, m, c):
+    answer = my_string[c-1::m]
+    
+    return answer
+
+# 빈 배열에 추가, 삭제하기
+def solution(arr, flag):
+    answer = []
+    for i in range(len(flag)):
+        if flag[i]:
+            answer.extend([arr[i]] * (arr[i] * 2))
+        else:
+            del answer[-arr[i]:]
     return answer

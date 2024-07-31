@@ -353,3 +353,19 @@ for i in range(len(a)):
     if 'ef' not in a[i]:
         answer += a[i]
 print(answer)
+
+a = []
+a += [1]
+# a.append(1)
+print(a)
+
+arr = [0] * 5
+print(arr)
+
+
+arr = [1,2,3,4,5]
+# arr.append(a[0])
+# arr.append(a[0])
+# del arr[-3:]
+arr.extend(arr[0] *((arr[0])* 3))
+print(arr)
