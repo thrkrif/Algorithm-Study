@@ -377,3 +377,30 @@ print(arr)
 # print(c)
 # b = c.pop()
 # print(b)
+
+myStr = "cabab"
+
+print(b)
+
+from collections import Counter
+st = ["a","bc","d","efg","hi"]
+
+print(b)
+
+
+
+result = []
+arr = [1, 2, 3, 100, 99, 98]
+result.append(arr)
+
+my_list = []
+for num in arr:
+    if num >= 50 and num % 2 == 0:
+        num = num // 2
+    elif num < 50 and num % 2 == 1:
+        num = num*2 + 1
+    my_list.append(num)
+print(my_list)
+result.append(my_list)
+print(result)
+
