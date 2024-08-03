@@ -977,3 +977,14 @@ def solution(arr):
 
     return x
 
+# 문자 개수 세기
+def solution(my_string):
+    answer = [chr(i) for i in range(65,91)] + [chr(i) for i in range(97,123)] 
+    lst = [0] * 52
+    
+    for i in range(len(answer)):
+        for j in my_string:
+            if answer[i] == j:
+                lst[i] += 1
+    
+    return lst

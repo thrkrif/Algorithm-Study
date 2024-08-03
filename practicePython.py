@@ -389,18 +389,26 @@ print(b)
 
 
 
-result = []
-arr = [1, 2, 3, 100, 99, 98]
-result.append(arr)
+# result = []
+# arr = [1, 2, 3, 100, 99, 98]
+# result.append(arr)
 
-my_list = []
-for num in arr:
-    if num >= 50 and num % 2 == 0:
-        num = num // 2
-    elif num < 50 and num % 2 == 1:
-        num = num*2 + 1
-    my_list.append(num)
-print(my_list)
-result.append(my_list)
-print(result)
+# my_list = []
+# for num in arr:
+#     if num >= 50 and num % 2 == 0:
+#         num = num // 2
+#     elif num < 50 and num % 2 == 1:
+#         num = num*2 + 1
+#     my_list.append(num)
+# print(my_list)
+# result.append(my_list)
+# print(result)
 
+answer = [chr(i) for i in range(65,91)] + [chr(i) for i in range(97,123)] 
+lst = [0] * 52
+print(answer)
+print(lst)
+
+my_string = "Programmers"
+for i in my_string:
+    print(i)
