@@ -922,3 +922,32 @@ data.sort()
 print(data)
 
 binary_search(data,86)
+
+# 백트랙킹
+
+def is_available(current_candidate, current_col):
+    current_row = len(current_candidate)
+    for queen_row in range(current_row):
+        if current_candidate[queen_row] == current_col or abs(current_candidate[queen_row] - current_col) == current_row - queen_row:
+            return False
+    return True
+
+def DFS(N, current_row, current_candidate, final_result):
+    if current_row == N:
+        final_result.append(current_candidate[:])
+        return
+    
+    for candidate_col in range(N):
+        if is_available(current_candidate, candidate_col):
+            current_candidate.append(candidate_col) # 퀸의 위치를 저장
+            DFS(N, current_row + 1, current_candidate, final_result)
+            current_candidate.pop() # 여기로 넘어왔단 것은 위의 DFS가 실행이 안되었음을 의미한다.
+            # 백트랙킹을 한다.
+
+
+def Nqueens(N):
+    final_result = []
+    DFS(N,0,[],final_result)
+    return final_result
+
+print(Nqueens(4))

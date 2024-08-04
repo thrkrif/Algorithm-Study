@@ -688,7 +688,7 @@ def solution(num_list):
     count = 0
     for i in num_list:
         while i != 1:
-            i // 2
+            i = i // 2
             count += 1
     return count
 
@@ -988,3 +988,63 @@ def solution(my_string):
                 lst[i] += 1
     
     return lst
+
+# 배열 만들기 6
+def solution(arr):
+    
+    stk = []
+    i = 0
+    while i < len(arr):
+        if len(stk) == 0:
+            stk.append(arr[i])
+            i += 1
+        elif len(stk) >= 1:
+            if stk[-1] == arr[i]:
+                stk.pop()
+                i += 1
+            else:
+                stk.append(arr[i])
+                i += 1
+
+    return  stk if len(stk) >= 1 else [-1]
+
+# 왼쪽 오른쪽 내가 짠 코드인데 오류가 있음
+def solution(str_list):
+    
+    if 'l' and 'r' not in str_list:
+        return []
+
+    if str_list.index('l') < str_list.index('r'):
+        return str_list[:str_list.index('l')]
+    elif str_list.index('l') > str_list.index('r'):
+        return str_list[str_list.index('r') + 1:]
+    else:
+        return []
+    
+# 왼쪽 오른쪽 수정본
+# l,r 둘 중 하나만 있는 경우도 생각해야해서 l과 r의 위치를 없으면 inf로 초기화 해야함
+def solution(str_list):
+    # 'l'과 'r'이 str_list에 모두 없는 경우 빈 리스트 반환
+    if 'l' not in str_list and 'r' not in str_list:
+        return []
+    
+    # 'l'과 'r'의 위치를 초기화
+    l_index = str_list.index('l') if 'l' in str_list else float('inf')
+    r_index = str_list.index('r') if 'r' in str_list else float('inf')
+    
+    # 'l'이 더 먼저 나오는 경우
+    if l_index < r_index:
+        return str_list[:l_index]
+    # 'r'이 더 먼저 나오는 경우
+    elif r_index < l_index:
+        return str_list[r_index + 1:]
+
+
+
+# 정사각형으로 만들기
+def solution(arr):
+    answer = [[]]
+    arr_row = 
+    arr_col = len(arr[0])
+
+    return answer

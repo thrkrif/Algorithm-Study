@@ -410,5 +410,7 @@ print(answer)
 print(lst)
 
 my_string = "Programmers"
-for i in my_string:
-    print(i)
+print(my_string[:0])
+my_list =list(my_string)
+my_list_reverse = my_list[1:4].reverse()
+print(my_list_reverse)
