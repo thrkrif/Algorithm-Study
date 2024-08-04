@@ -404,13 +404,15 @@ print(b)
 # result.append(my_list)
 # print(result)
 
-answer = [chr(i) for i in range(65,91)] + [chr(i) for i in range(97,123)] 
-lst = [0] * 52
-print(answer)
-print(lst)
+# answer = [chr(i) for i in range(65,91)] + [chr(i) for i in range(97,123)] 
+# lst = [0] * 52
+# print(answer)
+# print(lst)
 
-my_string = "Programmers"
-print(my_string[:0])
-my_list =list(my_string)
-my_list_reverse = my_list[1:4].reverse()
-print(my_list_reverse)
+# my_string = "Programmers"
+# print(my_string[:0])
+# my_list =list(my_string)
+
+
+my = [1,2,3,4]
+print(sum(my))
