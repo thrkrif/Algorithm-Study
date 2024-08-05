@@ -68,3 +68,47 @@ def solution(angle):
 def solution(age):
     
     return (2023 - age)
+
+# 문자열 뒤집기
+def solution(my_string):
+    
+    return my_string[::-1]
+
+# 양꼬치
+"""
+양꼬치 n인분, 음료수 k인분, n == 10 일때마다 음료수 1개 공짜
+"""
+def solution(n, k):
+    
+    return 
+
+# 편지
+def solution(message):
+    
+    return len(message) * 2
+
+# 배열 뒤집기
+def solution(num_list):
+    num_list.reverse()
+    return num_list
+
+# 짝수 홀수 개수
+def solution(num_list):
+    answer = []
+    odd = [i for i in num_list if i % 2 == 1]
+    even = [i for i in num_list if i % 2 == 0]
+    answer.append(len(even))
+    answer.append(len(odd))
+    return answer
+
+# 짝수 홀수 개수 더 쉽게
+def solution(num_list):
+    answer = [0,0]
+    for n in num_list:
+        answer[n%2]+=1  # 인덱스 내에서도 연산이 가능하구나 %2로 하면 index는 0,1 밖에 안되니까 짝수이면 0에 count, 홀수이면 1에 count
+    return answer
+
+# 문자 반복 출력하기
+def solution(my_string, n):
+    
+    return ''.join(i*n for i in my_string)

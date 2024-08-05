@@ -416,3 +416,6 @@ print(b)
 
 my = [1,2,3,4]
 print(sum(my))
+
+i = 'a'
+print('a'*3)
