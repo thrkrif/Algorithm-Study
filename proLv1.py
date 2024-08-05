@@ -112,3 +112,25 @@ def solution(num_list):
 def solution(my_string, n):
     
     return ''.join(i*n for i in my_string)
+
+# 중복된 숫자 개수
+def solution(array, n):
+    count = 0
+    for i in array:
+        if i == n:
+            count += 1
+    return count    # 리스트 내장 함수 count를 썼으면 더 쉽게 풀이 가능했다. return array.count(n) 이면 끝
+
+# 문자열안에 문자열
+def solution(str1, str2):
+    
+    return 1 if str2 in str1 else 2
+
+# 배열 원소의 길이
+def solution(strlist):
+    return [len(i) for i in strlist]
+
+# 중앙값 구하기
+def solution(array):
+    array.sort()
+    return array[len(array)//2]
