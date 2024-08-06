@@ -134,3 +134,61 @@ def solution(strlist):
 def solution(array):
     array.sort()
     return array[len(array)//2]
+
+# 짝수는 싫어요
+def solution(n):
+    answer = [i for i in range(n+1) if i % 2 == 1]
+    return sorted(answer)
+
+def solution(n):
+    return [x for x in range(n + 1) if x % 2]   # 0은 False, 1은 True 이므로
+
+# 피자 나눠 먹기 (1)
+def solution(n):
+    pizza  = n % 7 + 1
+    return pizza
+
+# 옷가게 할인 받기
+def solution(price):
+    
+    if price > 0 and price < 100000:
+        return price
+    elif price >= 100000 and price < 300000:
+        return (price * (0.95))
+    elif price >= 300000 and price < 500000:
+        return (price * (0.90))
+    else:
+        return (price * (0.80))
+    
+# 옷가게 할인 받기 items() 사용
+def solution(price):
+    discount = {500000:0.8, 300000:0.9, 100000:0.95, 0:1}
+    for discount_price, distcount_rate in discount.items():
+        if price >= discount_price:
+            return int(price * distcount_rate)
+
+
+# 아이스 아메리카노
+def solution(money):
+    ice = 5500
+    change = money % ice
+    count = money // ice
+    return [count, change]
+
+# 배열 자르기
+def solution(numbers, num1, num2):
+    
+    return numbers[num1:num2+1]
+
+# 개미 군단
+def solution(hp):
+    general = hp // 5
+    soldier = (hp % 5) // 3
+    work = (hp % 5) % 3 // 1
+    
+    return general + soldier + work
+
+# 숨어있는 숫자의 덧셈 (1)
+def solution(my_string):
+     
+    return sum([int(i) for i in my_string if i.isdecimal()])

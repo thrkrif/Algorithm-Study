@@ -417,5 +417,5 @@ print(b)
 my = [1,2,3,4]
 print(sum(my))
 
-i = 'a'
-print('a'*3)
+ia = "aAb1B2cC34oOp"
+print(sum([ int(i) for i in ia if i.isdecimal()]))
