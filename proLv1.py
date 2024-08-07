@@ -192,3 +192,23 @@ def solution(hp):
 def solution(my_string):
      
     return sum([int(i) for i in my_string if i.isdecimal()])
+
+# 암호 해독
+def solution(cipher, code):
+    
+    return ''.join([cipher(i) for i in range(len(cipher)) if (i+1) % code == 0])
+
+# 가장 큰 수 찾기
+def solution(array):
+    
+    return [max(array), array.index(max(array))]
+
+# n의 배수 고르기
+def solution(n, numlist):
+    
+    return [i for i in numlist if i % n == 0]
+
+# 특정 문자 제거하기
+def solution(my_string, letter):
+    
+    return ''.join([i for i in my_string if letter not in i]) 
