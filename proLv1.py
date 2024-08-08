@@ -212,3 +212,56 @@ def solution(n, numlist):
 def solution(my_string, letter):
     
     return ''.join([i for i in my_string if letter not in i]) 
+
+# 자릿수 더하기
+def solution(n):
+    
+    sum = 0
+    while n > 9:
+        sum += n % 10
+        n = n // 10
+    sum += n
+    
+    return sum
+
+# 짝수의 합
+def solution(n):
+    return sum([i for i in range(n+1) if i % 2 == 0])
+
+# 짝수의 합
+def solution(n):
+    return sum(range(2,n+1,2))
+
+# 머쓱이보다 키 큰 사람
+def solution(array, height):
+    answer = [i for i in array if i > height]
+    return len(answer)
+
+# 피자 나눠 먹기 (1)
+def solution(n):
+    return  (n // 7) if n % 7 == 0 else (n // 7) + 1
+
+# 배열의 유사도
+def solution(s1, s2):
+    count = 0
+    for i in s1:
+        for j in s2:
+            if i == j:
+                count += 1
+    return count
+
+# 배열의 유사도
+# 집합을 이용하여 쉽게 풀 수 있다.
+def solution(s1, s2):
+     return len(set(s1) & set(s2)) 
+
+
+# 최댓값 만들기(1)
+def solution(numbers):
+    numbers.sort()
+    return numbers[-1] * numbers[-2]
+
+# 세균 증식
+def solution(n, t):
+    return n * (2**t)
+
