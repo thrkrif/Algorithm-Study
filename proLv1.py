@@ -265,3 +265,64 @@ def solution(numbers):
 def solution(n, t):
     return n * (2**t)
 
+# 직각삼각형 출력하기
+n = int(input())
+for i in range(n):
+    print('*' * (i+1))
+
+# 최댓값 만들기 (2)
+"""
+조건 1. 최댓값이 되려면 두 수 모두 양수 or 음수여야함.
+"""
+
+# 점의 위치 구하기
+def solution(dot):
+    if dot[0] > 0 and dot[1] > 0 :
+        return 1
+    elif dot[0] < 0 and dot[1] > 0 :
+        return 2
+    elif dot[0] < 0 and dot[1] < 0 :
+        return 3
+    else:
+        return 4
+    
+# 가위 바위 보
+def solution(rsp):
+    answer = ''
+    for i in rsp:
+        if i == '2':
+            answer += '0'
+        elif i == '0':
+            answer += '5'
+        if i == '5':
+            answer += '2'
+    return answer
+
+# 순서쌍의 개수
+def solution(n):
+    count = 0
+    for i in range(1,n+1):
+        if n % i == 0:
+            count += 1
+    return count
+
+# 삼각형의 완성조건 (1)
+def solution(sides):
+    long = max(sides)
+    sides.pop(sides.index(long))
+    if long < sum(sides):
+        return 1
+    else:
+        return 2
+    
+# 피자 나눠 먹기 (3)
+def solution(slice, n):
+    return (n-1) // slice + 1
+
+# 피자 나눠 먹기 (2)
+def solution(n):
+    i = 1
+    while True:
+        if (n * i) % 6 == 0:
+            return (n * i) / 6
+        i += 1
