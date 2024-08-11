@@ -424,4 +424,4 @@ print(ia.index('a'))
 
 n = 1234
 
-print("*" * 2)
+print(''.join(['1','2']))

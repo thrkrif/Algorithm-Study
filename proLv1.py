@@ -79,8 +79,7 @@ def solution(my_string):
 양꼬치 n인분, 음료수 k인분, n == 10 일때마다 음료수 1개 공짜
 """
 def solution(n, k):
-    
-    return 
+    return n * 12000 + (k - n // 10) * 2000
 
 # 편지
 def solution(message):
@@ -326,3 +325,34 @@ def solution(n):
         if (n * i) % 6 == 0:
             return (n * i) / 6
         i += 1
+
+# 369게임
+"""
+3,6,9 가 들어있으면 박수를 한 번씩 쳐야한다. 29423은 9,3 이 있으므로 두번 쳐야한다.
+"""
+
+def solution(order):
+    count = 0
+    for i in str(order):
+        if i == '3' or i == '6' or i == '9':
+            count += 1
+    return count
+
+# 문자열 정렬하기 (2)
+"""
+upper, lower는 
+"""
+def solution(my_string):
+    my_string = my_string.lower()
+    return ''.join(sorted(my_string))
+
+# 배열 회전시키기
+def solution(numbers, direction):
+    if direction == "right":
+        return  [numbers.pop()]+ numbers[:] 
+    elif direction == "left":
+        return numbers[1:] + [numbers[0]]
+    
+# 문자열 정렬하기 (1)
+def solution(my_string):
+     return sorted([int(i) for i in my_string if i.isdigit()])
