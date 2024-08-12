@@ -194,8 +194,7 @@ def solution(my_string):
 
 # 암호 해독
 def solution(cipher, code):
-    
-    return ''.join([cipher(i) for i in range(len(cipher)) if (i+1) % code == 0])
+    return ''.join([cipher[i] for i in range(len(cipher)) if (i+1) % code == 0])
 
 # 가장 큰 수 찾기
 def solution(array):
@@ -356,3 +355,56 @@ def solution(numbers, direction):
 # 문자열 정렬하기 (1)
 def solution(my_string):
      return sorted([int(i) for i in my_string if i.isdigit()])
+
+# 제곱수 판별하기
+def solution(n):
+    for i in range(1,n//2):
+        if i ** 2 == n:
+            return 1
+    return 2
+
+# 대문자와 소문자
+def solution(my_string):
+    answer = ''
+    for i in my_string:
+        if i.isupper():
+            answer += i.lower()
+        elif i.islower():
+            answer += i.upper()
+    return answer
+
+# 주사위의 개수
+def solution(box, n):
+    return (box[0] // n) * (box[1] // n) * (box[2] // n)
+
+# 모음 제거
+def solution(my_string):
+    answer = ''
+    for i in my_string:
+        if i == 'a':
+            continue
+        elif i == 'i':
+            continue
+        elif i == 'e':
+            continue
+        elif i == 'o':
+            continue
+        elif i == 'u':
+            continue
+        else:
+            answer += i
+    return answer
+
+# 약수 구하기
+def solution(n):
+    return [i for i in range(1,n+1) if n % i == 0]
+
+# A로 B 만들기
+def solution(before, after):
+    before = before[::-1]
+    if before == after:
+        return 1
+    else:
+        return 0
+    
+    
