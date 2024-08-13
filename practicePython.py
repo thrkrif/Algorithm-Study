@@ -425,3 +425,8 @@ print(ia.index('a'))
 n = 1234
 
 print(''.join(['1','2']))
+
+myString = "AbCdEFG"
+pat = "dE"
+print(myString.index(pat))
+print(myString[2])

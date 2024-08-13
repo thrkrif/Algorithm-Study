@@ -1041,10 +1041,23 @@ def solution(str_list):
 
 
 
-# 정사각형으로 만들기
-def solution(arr):
-    answer = [[]]
-    arr_row = 
-    arr_col = len(arr[0])
+# 수열 구간과 쿼리2
+def solution(arr, queries):
+	answer = []
+	for (s,e,k) in queries:
+		answer += [[arr[i] for i in range(s,e+1) if arr[i] > k]]
+	return [min(i) if len(i) >= 1 else -1 for i in answer]
 
-    return answer
+# 수열과 구간 쿼리 4
+def solution(arr, queries):
+    for (s,e,k) in queries:
+        for i in range(s,e+1):
+            if i % k == 0:
+                arr[i] += 1
+    return arr
+
+# 배열 만들기 2
+def solution(l, r):
+    answer = [ i for i in range(l,r+1) if all( char in '05' for char in str(i))]
+    return answer if answer else [-1]
+

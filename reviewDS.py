@@ -22,5 +22,6 @@ def recursive(data):
         print(data)
         recursive(data-1)
         print('returned', data)
-        
+
 recursive(4)
+
