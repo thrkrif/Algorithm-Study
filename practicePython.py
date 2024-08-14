@@ -429,4 +429,22 @@ print(''.join(['1','2']))
 myString = "AbCdEFG"
 pat = "dE"
 print(myString.index(pat))
-print(myString[2])
+print(myString[2] * 3)
+
+
+picture = [".xx...xx.", "x..x.x..x", "x...x...x", ".x.....x.", "..x...x..", "...x.x...", "....x...."]
+
+def solution(picture, k):
+    # 1. 가로 확대
+    result = []
+    for i in range(len(picture)):
+        answer = ''             # +=을 하면 0번째 행의 글자가 1번째 행이랑 합쳐지고 그 다음엔 2번째랑 합쳐지고... 하므로 한번 돌때마다 초기화
+        for j in picture[i]:    # j는 str 형식으로 들어감.
+            answer += j * k     # 한 행을 수행한다.
+        # 2. 세로 확대    
+        for m in range(k): 
+            result.append(answer)   # 한 행을 마치면 리스트에 추가한다.
+        
+    return result
+
+print(solution(picture,2))

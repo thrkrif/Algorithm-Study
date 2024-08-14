@@ -1061,3 +1061,34 @@ def solution(l, r):
     answer = [ i for i in range(l,r+1) if all( char in '05' for char in str(i))]
     return answer if answer else [-1]
 
+# 그림 확대
+def solution(picture, k):
+    # 1. 가로 확대
+    result = []
+    for i in range(len(picture)):
+        answer = ''             # +=을 하면 0번째 행의 글자가 1번째 행이랑 합쳐지고 그 다음엔 2번째랑 합쳐지고... 하므로 한번 돌때마다 초기화
+        for j in picture[i]:    # j는 str 형식으로 들어감.
+            answer += j * k     # 한 행을 수행한다.
+        # 2. 세로 확대    
+        for m in range(k): 
+            result.append(answer)   # 한 행을 마치면 리스트에 추가한다.
+        
+    return result
+
+# 전국 대회 선발 고사
+def solution(rank, attendance):
+    result = []
+    for i in range(len(rank)):
+        if attendance[i] == True:
+            result.append(rank[i])
+    result.sort()
+    return 10000 * result[0] + 100 * result[1] + result[2]
+
+# 배열 조각하기
+def solution(arr, query):
+    for i in range(len(query)):
+        if i % 2 == 0:
+            arr = arr[:query[i]+1]
+        else:
+            arr = arr[query[i]:]
+    return arr
