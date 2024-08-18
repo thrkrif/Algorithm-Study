@@ -1092,3 +1092,22 @@ def solution(arr, query):
         else:
             arr = arr[query[i]:]
     return arr
+
+# 문자열 여러번 뒤집기
+def solution(my_string, queries):
+    for s,e in queries:
+        my_string = my_string[:s] + my_string[s:e+1][::-1] + my_string[e+1:]
+    return my_string
+
+# 특정 문자열로 끝나는 가장 긴 부분 문자열 찾기
+def solution(myString, pat):
+    return myString.rsplit(pat,1)[0] + pat
+
+# 글자 지우기
+def solution(my_string, indices):
+    result = ''
+    for i in range(len(my_string)):
+        if i in indices:
+            continue
+        result += my_string[i]
+    return result
