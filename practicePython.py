@@ -450,4 +450,14 @@ print(myString[2] * 3)
 # print(solution(picture,2))
 
 myStr = "cabab"
-myStr.split('a').split()
+print(myStr.rsplit('a',1))
+
+new_list = [1,2,3,5,4]
+# newnew = sorted(new_list)
+new_list.sort()
+print(new_list)
+
+answer = [[1, 2, 3], [3, 4, 5, 6]]
+print(len(answer)) # 행의 개수 2
+print(len(answer[0])) # 0행의 열의 개수 3
+print(len(answer[1])) # 1행의 열의 개수 4

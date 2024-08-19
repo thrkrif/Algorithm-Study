@@ -1111,3 +1111,69 @@ def solution(my_string, indices):
             continue
         result += my_string[i]
     return result
+
+# 왼쪽 오른쪽
+def solution(str_list):
+    
+    if 'l' not in str_list and 'r' not in str_list:
+        return []
+
+    if str_list.index('l') < str_list.index('r'):
+        return str_list[:str_list.index('l')]
+    elif str_list.index('l') > str_list.index('r'):
+        return str_list[str_list.index('r') + 1:]
+    else:
+        return []
+    
+# 주사위 게임3
+def solution(a, b, c, d):
+    dice_list = [a,b,c,d]
+    non_dup_list = list(set(dice_list))
+
+    if len(non_dup_list) == 1:
+        return 1111 * non_dup_list[0]
+    elif len(non_dup_list) == 2:
+        for element in non_dup_list:
+            if dice_list.count(element) == 3:
+                p = element
+                q = [i for i in non_dup_list if i != element][0]
+                return (10 * p + q) ** 2
+        return (non_dup_list[0] + non_dup_list[1]) * (abs(non_dup_list[0] - non_dup_list[1]))
+    elif len(non_dup_list) == 3:
+        for element in non_dup_list:
+            if dice_list.count(element) == 2:
+                new_list = [x for x in non_dup_list if x != element]    # 중복되는 요소를 포함시키지 않겠다.
+        return new_list[0] * new_list[1]
+    else:
+        non_dup_list.sort()
+        return non_dup_list[0]
+
+# 무작위로 K개의 수 뽑기
+def solution(arr, k):
+    new_arr = []
+    for element in arr:
+        if element not in new_arr:
+            new_arr.append(element)
+        if len(new_arr) == k:
+            break
+
+    while len(new_arr) < k:
+        new_arr.append(-1)
+
+    return new_arr
+
+# 정사각형으로 만들기
+def solution(arr):
+    row = len(arr)  # 행의 길이
+    col = [ len(arr[i]) for i in range(row) ] # 각 행마다의 열의 길이를 저장함.
+
+    if max(col) <= row:  # 행이 더 길다면 열을 추가해줘야한다.
+        for i in range(row):
+            while len(arr[i]) < row:
+                arr[i].append(0)
+        return arr
+    elif max(col) > row:
+        for i in range(max(col)):
+            while len(arr[i]) < max(col):
+                arr[i].append(0)
+        return arr
