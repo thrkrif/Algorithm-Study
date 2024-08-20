@@ -1039,7 +1039,33 @@ def solution(str_list):
     elif r_index < l_index:
         return str_list[r_index + 1:]
 
+# 왼쪽 오른쪽 최종
+def solution(str_list):
+    
+    # 1. 'l', 'r' 둘 다 없는 경우
+    if 'l' not in str_list and 'r' not in str_list:
+        return []
+    # 2. 'l'만 존재하는 경우
+    if 'l' in str_list and 'r' not in str_list:
+        return str_list[:str_list.index('l')]
+    # 3. 'r'만 존재하는 경우
+    if 'l' not in str_list and 'r' in str_list:
+        return str_list[str_list.index('r') + 1:]
+    
+    # 4. 'l', 'r' 둘 다 존재하는 경우
+    if str_list.index('l') < str_list.index('r'):
+        return str_list[:str_list.index('l')]
+    elif str_list.index('l') > str_list.index('r'):
+        return str_list[str_list.index('r') + 1:]
+    else:
+        return []
 
+# 왼쪽 오른쪽 다른 사람들 풀이
+def solution(str_list):
+    for i in range(len(str_list)):
+        if str_list[i]=='l': return str_list[:i]
+        elif str_list[i]=='r': return str_list[i+1:]
+    return []
 
 # 수열 구간과 쿼리2
 def solution(arr, queries):
@@ -1177,3 +1203,4 @@ def solution(arr):
             while len(arr[i]) < max(col):
                 arr[i].append(0)
         return arr
+    
