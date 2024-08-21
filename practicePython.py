@@ -461,3 +461,12 @@ answer = [[1, 2, 3], [3, 4, 5, 6]]
 print(len(answer)) # 행의 개수 2
 print(len(answer[0])) # 0행의 열의 개수 3
 print(len(answer[1])) # 1행의 열의 개수 4
+
+# 딕셔너리
+a = {'name': 'pey', 'phone': '0119993323'}
+print(a.keys())
+print(a.values())
+print(a.get('name'))
+
+my_list = []
+print(len(my_list))

@@ -946,20 +946,24 @@ def solution(strArr):
             
     return max(count1,count2,count3)
 
+
 # 조건에 맞게 수열 변환하기 2
 def solution(arr):
     result = []
     result.append(arr)
     """
-    result라는 이차원 리스트를 만들고 result[x] = result [x+1] 이면 x를 return 하도록 할 것임
+    result라는 이차원 리스트를 만들고 result[x] == result[x+1] 이면 x를 return 하도록 할 것임
     """
     my_list = []
     for num in arr:
         if num >= 50 and num % 2 == 0:
             num = num // 2
+            my_list.append(num)
         elif num < 50 and num % 2 == 1:
             num = num*2 + 1
-        my_list.append(num)
+            my_list.append(num)
+        else:
+            my_list.append(num)
     result.append(my_list)
     # my_list라는 리스트에 for문의 요소들을 저장하고 이 리스트를 result에 추가한다. 즉 이것은 result[1]이 된다.
     # 이 과정을 result[x] == result[x+1] 이 될 때까지 반복하게 하는 반복문을 만들면 된다.
@@ -967,13 +971,17 @@ def solution(arr):
     x = 0 # 위에서 0,1을 만들어 놨으므로 비교 시작한다.
     while result[x] != result[x+1]:
         my_list = []
-        for num in arr:
+        for num in result[x+1]:
             if num >= 50 and num % 2 == 0:
-                num /= 2
+                num = num // 2
+                my_list.append(num)
             elif num < 50 and num % 2 == 1:
                 num = num*2 + 1
-        my_list.append(num)
-    result.append(my_list)
+                my_list.append(num)
+            else:
+                my_list.append(num)
+        result.append(my_list)
+        x += 1
 
     return x
 
@@ -1204,3 +1212,50 @@ def solution(arr):
                 arr[i].append(0)
         return arr
     
+# 문자열 묶기
+def solution(strArr):
+    elementLen = [len(i) for i in strArr]
+    result = []
+    for i in set(elementLen):
+        result.append(elementLen.count(i)) # 모든 요소를 순회하면서 똑같은 값들이 나오긴 함 그래도 그 중 max가 답임. 
+    
+    return max(result)
+    
+# 문자열 묶기 딕셔너리 이용
+def solution(strArr):
+    d = {}
+    for i in strArr:
+        d[len(i)] = d.get(len(i),0) + 1
+    return max(d.values())
+
+# 세 개의 구분자 정규식 re?
+def solution(myStr):
+    result = []
+    import re
+    for tar in re.split('[a,b,c]',myStr):
+        if not tar:
+            continue
+        result += tar
+    return result if len(result) > 0 else ["EMPTY"]
+
+# 세 개의 구분자
+def solution(myStr):
+    result = []
+    for i in myStr:
+        if i in ['a','b','c']:
+            result.append('')
+        else:
+            result.append(i)
+    return list(''.join(result)) if len(result) > 0 else ['EMPTY']
+
+
+# 세 개의 구분자 최종
+def solution(myStr):
+    result = []
+    for i in myStr:
+        if i in ['a','b','c']:
+            myStr = myStr.replace(i,' ')
+    result = myStr.split()
+    if not result:
+        return ["EMPTY"]
+    return result
