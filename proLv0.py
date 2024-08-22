@@ -1113,10 +1113,23 @@ def solution(picture, k):
 def solution(rank, attendance):
     result = []
     for i in range(len(rank)):
-        if attendance[i] == True:
+        if attendance[i]:
             result.append(rank[i])
     result.sort()
-    return 10000 * result[0] + 100 * result[1] + result[2]
+    return 10000 * rank.index(result[0]) + 100 * rank.index(result[1]) + rank.index(result[2])
+
+# 전국 대회 선발 고사
+def solution(rank, attendance):
+    dic = {}
+    # key = rank, value = index로 하자.
+    for i in range(len(rank)):
+        if attendance[i]:
+            dic[rank[i]] = i
+    sorted_dic = dict(sorted(dic.items(), key=lambda key: key[0]))
+    return 10000 * sorted_dic[] # --> 이렇게 풀려고 하니 key가 뭐가 들어있는지 모른다. 딕셔너리는 index가 아니라 key로 value를 찾는다.
+
+# 전국 대회 선발 고사
+    
 
 # 배열 조각하기
 def solution(arr, query):
@@ -1198,19 +1211,22 @@ def solution(arr, k):
 
 # 정사각형으로 만들기
 def solution(arr):
-    row = len(arr)  # 행의 길이
-    col = [ len(arr[i]) for i in range(row) ] # 각 행마다의 열의 길이를 저장함.
+    row = len(arr)
+    col = len(arr[0])
 
-    if max(col) <= row:  # 행이 더 길다면 열을 추가해줘야한다.
+    # 1. 행의 개수가 열의 개수보다 많은 경우
+    if row > col:
         for i in range(row):
-            while len(arr[i]) < row:
-                arr[i].append(0)
+            arr[i].extend(0 * (row - col))
         return arr
-    elif max(col) > row:
-        for i in range(max(col)):
-            while len(arr[i]) < max(col):
-                arr[i].append(0)
+    
+    # 2. 열의 개수가 행의 개수보다 많은 경우 -> 리스트를 확장해야 함.
+    elif col > row:
+        for _ in range(col-row):
+            arr.append(0 * col)
         return arr
+    # 3. 행의 개수와 열의 개수가 같은 경우
+    return arr
     
 # 문자열 묶기
 def solution(strArr):
