@@ -422,3 +422,40 @@ def solution(my_string, num1, num2):
     s = list(my_string)
     s[num1],s[num2] = s[num2],s[num1]
     return ''.join(s)
+
+# 중복된 문자 제거
+def solution(my_string):
+    answer = ''
+    for i in my_string:
+        if i in answer:
+            continue
+        answer += i
+    return answer
+
+# 최빈값 구하기
+def solution(array):
+    answer = [0] * 1000
+    for i in array:
+        answer[i] += 1
+    result = max(answer)
+    count = 0
+    for i in range(len(answer)):
+        if answer[i] == result:
+            count += 1
+    return -1 if count >= 2 else answer.index(result)
+
+# 최빈값 구하기2
+def solution(array):
+    answer = [0] * 1000
+    for i in array:
+        answer[i] += 1
+    result = max(answer)
+    
+    return -1 if answer.count(result) >= 2 else answer.index(result)
+
+# 숫자 찾기
+def solution(num, k):
+    num_list = list(str(num))
+    if str(k) in num_list:
+        return num_list.index(str(k)) + 1
+    return -1

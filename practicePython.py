@@ -470,3 +470,12 @@ print(a.get('name'))
 
 my_list = []
 print(len(my_list))
+
+keys = ['a', 'b', 'c','a','a','d']
+value = 0
+d = dict.fromkeys(keys, value)
+print(d)  # 출력: {'a': 0, 'b': 0, 'c': 0}
+print(''.join(d)) # 출력 abcd
+
+num = 29183
+print(list(str(num)))
