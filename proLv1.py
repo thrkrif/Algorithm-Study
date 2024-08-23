@@ -272,6 +272,11 @@ for i in range(n):
 """
 조건 1. 최댓값이 되려면 두 수 모두 양수 or 음수여야함.
 """
+def solution(numbers):
+    sort_numbers = sorted(numbers)
+    max1 = sort_numbers[0] * sort_numbers[1] 
+    max2 = sort_numbers[-1] * sort_numbers[-2]
+    return max(max1,max2)
 
 # 점의 위치 구하기
 def solution(dot):
@@ -407,4 +412,13 @@ def solution(before, after):
     else:
         return 0
     
-    
+
+# 인덱스 바꾸기 슬라이싱 기법 이용
+def solution(my_string, num1, num2):
+    return my_string[:num1] + my_string[num2] + my_string[num1+1:num2] + my_string[num1] + my_string[num2+1:]
+
+# 인덱스 바꾸기 리스트 이용
+def solution(my_string, num1, num2):
+    s = list(my_string)
+    s[num1],s[num2] = s[num2],s[num1]
+    return ''.join(s)

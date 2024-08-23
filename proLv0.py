@@ -1126,7 +1126,9 @@ def solution(rank, attendance):
         if attendance[i]:
             dic[rank[i]] = i
     sorted_dic = dict(sorted(dic.items(), key=lambda key: key[0]))
-    return 10000 * sorted_dic[] # --> 이렇게 풀려고 하니 key가 뭐가 들어있는지 모른다. 딕셔너리는 index가 아니라 key로 value를 찾는다.
+    con_sorted_list = list(sorted_dic.values())[:3]
+    
+    return 10000 * con_sorted_list[0] + 100 * con_sorted_list[1] + con_sorted_list[2]
 
 # 전국 대회 선발 고사
     
