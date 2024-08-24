@@ -479,3 +479,10 @@ print(''.join(d)) # 출력 abcd
 
 num = 29183
 print(list(str(num)))
+
+
+dic = {0:'a', 1: 'b', 2:'c'}
+for i in dic.values():
+    print(i)
+
+print(dic.get(3,0))
