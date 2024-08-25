@@ -467,3 +467,10 @@ def solution(age):
     for i in str(age):
         answer += dic[int(i)]
     return answer
+
+# k의 개수
+def solution(i, j, k):
+    sum = 0 
+    for _ in range(i,j+1):
+        sum += str(_).count(str(k))
+    return sum
