@@ -49,6 +49,29 @@ print(data_list.pop())
 print(data_list)
 
 
+# 링크드 리스트
+class Node:
+    def __init__(self, data, next = None):
+        self.data = data
+        self.next = next
+    
+    def add(self, data):
+        node = head
+        while node.next:
+            node = node.next
+        node.next = Node(data)
+
+
+node1 = Node(1)
+head = node1
+for index in range(2,10):
+    node1.add(index)
+
+node = head
+while node.next:
+    print(node.data)
+    node = node.next
+print (node.data)
 
 # 힙
 

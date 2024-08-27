@@ -474,3 +474,37 @@ def solution(i, j, k):
     for _ in range(i,j+1):
         sum += str(_).count(str(k))
     return sum
+
+# A로 B 만들기
+"""
+문자가 똑같이 들어 있으면 (어떤 문자가, 몇개 들었는지) 확인 가능하다.
+"""
+def solution(before, after):
+    answer1,answer2 = {},{}
+    for i in before:
+        if i not in answer1:
+            answer1[i] = before.count(i)
+    for j in after:
+        if j not in answer2:
+            answer2[j] = after.count(j)
+    
+    return 1 if sorted(answer1.items()) == sorted(answer2.items()) else 0
+
+# A로 B 만들기 다른 풀이
+def solution(before, after):
+    return 1 if sorted(before)==sorted(after) else 0
+
+# 7의 개수
+def solution(array):
+    result = 0
+    for i in array:
+        result += str(i).count('7')
+    return result
+
+# 한 번만 가능한 문자
+def solution(s):
+    result = ''
+    for i in s:
+        if s.count(i) == 1:
+            result += i
+    return [] if not result else ''.join(sorted(result))
