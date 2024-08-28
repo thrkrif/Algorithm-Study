@@ -486,3 +486,7 @@ for i in dic.values():
     print(i)
 
 print(dic.get(3,0))
+
+my_str = "3 + 4"
+answer = my_str.spilt(' ')
+print(answer)

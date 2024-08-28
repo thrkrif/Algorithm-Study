@@ -508,3 +508,78 @@ def solution(s):
         if s.count(i) == 1:
             result += i
     return [] if not result else ''.join(sorted(result))
+
+# 컨트롤 제트
+def solution(s):
+    new_s = s.split(' ')
+    result = 0
+    for i in range(len(new_s)):
+        if new_s[i] == 'Z':
+            result -= int(new_s[i-1])
+        else:
+            result += int(new_s[i])
+    return result
+
+# 컨트롤 제트 stack 이용
+def solution(s):
+    stack = []
+    for i in s.split():
+        if i != 'Z':
+            stack.append(int(i))
+        else:
+            if stack:
+                stack.pop()
+    return sum(stack)
+
+# 문자열 계산하기
+def solution(my_string):
+    answer = my_string.split(' ')
+    result = int(answer[0])
+    for i in range(1,len(answer),2):
+        operator = answer[i]
+        number = int(answer[i+1])
+        if operator == '+':
+            result += number
+        elif operator == '-':
+            result -= number
+
+    return result
+
+# 영어가 싫어요
+def solution(numbers):
+    numbers = numbers.replace('zero','0')
+    numbers = numbers.replace('one','1')
+    numbers = numbers.replace('two','2')
+    numbers = numbers.replace('three','3')
+    numbers = numbers.replace('four','4')
+    numbers = numbers.replace('five','5')
+    numbers = numbers.replace('six','6')
+    numbers = numbers.replace('seven','7')
+    numbers = numbers.replace('eight','8')
+    numbers = numbers.replace('nine','9')
+    
+    return int(numbers)
+
+# 구슬을 나누는 경우의 수
+def solution(balls, share):
+    mol = 1 # 분자
+    denom = 1 # 분모
+    for i in range(balls-share+1,balls+1):
+        mol *= i
+    for j in range(2,share+1):
+        denom *= j
+    return mol / denom
+
+# 삼각형의 완성조건 (2)
+"""
+1. sides에 있는 두 수 중에 가장 큰 수가 빗변이 되는 경우.
+2. sides에 포함 되어 있지 않는 것이 빗변이 되는 경우
+"""
+def solution(sides):
+    # 1
+    count = 0
+    max = sides.pop(max(sides))
+    for i in range(max - sides[0],max):
+
+
+    return answer
