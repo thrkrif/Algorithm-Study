@@ -50,28 +50,41 @@ print(data_list)
 
 
 # 링크드 리스트
+# 1. 하나의 노드를 만드는 클래스
 class Node:
-    def __init__(self, data, next = None):
+    def __init__(self, data, next = None):  # next에 아무런 입력값이 안들어가면 None으로 초기화 된다는 의미임.
         self.data = data
-        self.next = next
-    
-    def add(self, data):
-        node = head
-        while node.next:
+        self.next = next    # next를 입력 받았을 때
+
+class NodeMgmt:
+    def __init__(self,data):
+        self.head = Node(data)  # 가장 처음 생성된 노드를 head로 지정함. Node클래스를 쓰므로 data, next를 이용 가능함.
+                                # 여기선 next를 입력 안했으므로 next는 None인 상태
+
+    def add(self, data):    # 맨 뒤에 노드 객체를 추가해주는 함수
+        if self.head == '': # head가 비었다면, 즉 아무런 노드도 없다면
+            self.head = Node(data)  # 노드를 생성한다.
+        else:
+            node = self.head
+            while node.next:
+                node = node.next
+            node.next = Node(data)
+        
+    def desc(self):
+        node = self.head
+        while node:
+            print(node.data)
             node = node.next
-        node.next = Node(data)
 
+    def delete(self,data):
+        if self.head == '': # 방어코드
+            print("노드가 아예 없습니다. 노드를 생성하세요")
 
-node1 = Node(1)
-head = node1
-for index in range(2,10):
-    node1.add(index)
-
-node = head
-while node.next:
-    print(node.data)
-    node = node.next
-print (node.data)
+        if self.head.data == data:  # 가장 처음 노드를 삭제하는 경우
+            temp = self.head
+            self.head = self.head.next
+            del temp
+        else:   # 데이터가 존재하지 않는다면
 
 # 힙
 

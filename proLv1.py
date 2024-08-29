@@ -583,3 +583,19 @@ def solution(sides):
 
 
     return answer
+
+# 팩토리얼
+def solution(n):
+    i = 1
+    fac = 1
+    while(n >= fac):
+        fac *= i
+        i += 1
+    return i-2
+
+# 외계어 사전
+def solution(spell, dic):
+    for i in dic:
+        if sorted(spell) == sorted(list(i)):
+            return 1
+    return 2
