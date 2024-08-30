@@ -80,11 +80,22 @@ class NodeMgmt:
         if self.head == '': # 방어코드
             print("노드가 아예 없습니다. 노드를 생성하세요")
 
+
         if self.head.data == data:  # 가장 처음 노드를 삭제하는 경우
             temp = self.head
             self.head = self.head.next
             del temp
-        else:   # 데이터가 존재하지 않는다면
+        else:   # 두번째 이부터의 노드를 삭제하는 경우
+            node = self.head
+            while node.next:
+                if node.next.data == data:
+                    temp = node.next
+                    node.next = node.next.next
+                    del temp
+                    pass
+                else:
+                    node = node.next
+
 
 # 힙
 
