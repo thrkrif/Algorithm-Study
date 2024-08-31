@@ -599,3 +599,22 @@ def solution(spell, dic):
         if sorted(spell) == sorted(list(i)):
             return 1
     return 2
+
+# 분수의 덧셈
+def solution(numer1, denom1, numer2, denom2):
+    answer = []
+    denom = denom1 * denom2
+    numer = numer1 * denom2 + numer2 * denom1
+    denom,numer = result(denom,numer)
+    answer.append(denom)
+    answer.append(numer)
+    return answer
+
+def result(denom,numer):
+    for i in range(2,denom+1):
+        if denom % i == 0 and numer % i == 0:
+            denom //= i
+            numer //= i
+            return result(denom,numer)
+    return denom,numer
+    
