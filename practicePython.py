@@ -553,3 +553,5 @@ print(result)
 print(result.numerator) 
 print(result.denominator)
 print(float(result))
+
+print(ord('9'))

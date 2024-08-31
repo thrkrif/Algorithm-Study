@@ -617,4 +617,23 @@ def result(denom,numer):
             numer //= i
             return result(denom,numer)
     return denom,numer
+
+# 합성수 찾기
+def solution(n):
+    result = 0
+    for i in range(4,n+1):
+        count = 0
+        for j in range(1,i+1):
+            if i % j == 0:
+                count += 1
+        if count >= 3:
+            result += 1
+    return result
+
+# 숨어있는 숫자의 덧셈 (2) -> 런타임 에러 발생
+def solution(my_string):
+
+    my_string = my_string.translate(str.maketrans('abcdefghizklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ',' ' * len('abcdefghizklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ')))
+    numbers = my_string.split()
     
+    return sum([int(i) for i in numbers])
