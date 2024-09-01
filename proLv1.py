@@ -637,3 +637,29 @@ def solution(my_string):
     numbers = my_string.split()
     
     return sum([int(i) for i in numbers])
+
+# 모스부호(1)
+def solution(letter):
+    morse = {       
+    '.-':'a','-...':'b','-.-.':'c','-..':'d','.':'e','..-.':'f',
+    '--.':'g','....':'h','..':'i','.---':'j','-.-':'k','.-..':'l',
+    '--':'m','-.':'n','---':'o','.--.':'p','--.-':'q','.-.':'r',
+    '...':'s','-':'t','..-':'u','...-':'v','.--':'w','-..-':'x',
+    '-.--':'y','--..':'z'
+    }
+    for key, value in morse.items():
+        if key in letter:
+            letter = letter.replace(key,value)
+    return letter
+
+# 진료순서 정하기
+def solution(emergency):
+    answer = [0] * len(emergency)
+    rank = 1
+    
+    while(emergency != [0] * len(emergency)):
+        index = emergency.index(max(emergency)) # 최댓값의 인덱스
+        answer[index] = rank    # 순위를 집어넣고 rank 증가
+        rank += 1
+        emergency[index] = 0
+    return answer
