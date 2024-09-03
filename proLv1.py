@@ -663,3 +663,44 @@ def solution(emergency):
         rank += 1
         emergency[index] = 0
     return answer
+
+# 캐릭터의 좌표
+"""
+1. 보드 제한 없다고 생각하고 풀어보기
+2. 보드 제한 있이, [7,9]라면 좌우로 3, 위 아래로 4 까지 이동 가능
+"""
+
+def solution(keyinput, board):
+    answer = [0,0]
+    new_board = [[0,0],[0,0]]
+    new_board[0][0] = -(board[0] // 2)
+    new_board[0][1] = board[0] // 2
+    new_board[1][0] = -(board[1] // 2)
+    new_board[1][1] = board[1] // 2
+
+    for i in keyinput:
+        if i == 'left':
+            answer[0] += -1
+        elif i == "right":
+            answer[0] += 1
+        elif i == 'up':
+            answer[1] += 1
+        elif i == 'down':
+            answer[1] += -1
+        else:
+            print("잘못된 입력입니다.")
+
+    if abs(new_board[0][0]) < abs(answer[0]):
+        if answer[0] < 0:
+            answer[0] = new_board[0][0]
+        elif answer[0] > 0:
+            answer[0] = new_board[0][1]
+        
+    
+    if abs(new_board[1][0]) < abs(answer[1]):
+        if answer[1] < 0:
+            answer[1] = new_board[1][0]
+        elif answer[1] > 0:
+            answer[1] = new_board[1][1]
+
+    return answer

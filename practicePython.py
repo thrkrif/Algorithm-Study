@@ -560,3 +560,6 @@ li = [1,3,2,5]
 print(sorted(li))
 dic = {76:1, 24:2}
 print(dic[76])
+
+a = 1
+print(-a)
