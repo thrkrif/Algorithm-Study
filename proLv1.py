@@ -704,3 +704,65 @@ def solution(keyinput, board):
             answer[1] = new_board[1][1]
 
     return answer
+
+# 로그인 성공?
+def solution(id_pw, db):
+    answer = ''
+    for i in db:
+        if i == id_pw:
+            return 'login'
+        else:   # id_pw가 맞지 않는 경우 --> 여기서 오류가 발생함. 중간에 아이디만 맞는게 있어서 answer = 'wrong pw'가 되어도
+                # 마지막에 아이디 비밀번호가 틀린게 나온다면 answer = 'fail'이 저장됨. 이 문제를 어떻게 해결해야 할까?? 
+            if i[0] == id_pw[0]:
+                answer = 'wrong pw'
+            else:
+                answer = 'fail'
+                
+    return answer
+
+
+def solution(id_pw, db):
+    answer = 'fail' # 처음부터 answer를 fail로 지정해주면 된다.
+    for i in db:
+        if i == id_pw:
+            return 'login'
+        else:   
+            if i[0] == id_pw[0]:
+                answer = 'wrong pw'
+                
+    return answer
+
+# 코드 분석하기
+def solution(id_pw, db):
+    if db_pw := dict(db).get(id_pw[0]):
+        return "login" if db_pw == id_pw[1] else "wrong pw"
+    return "fail"
+
+# 등수 매기기
+def solution(score):
+    score_avg = []
+    for i,j in score:
+        score_avg.append((i+j) / 2.0)
+    sorted_score_avg = sorted(score_avg,reverse=True) 
+    return [(sorted_score_avg.index(k)+1) for k in score_avg] # 2로 나누지 않았어도 상관 없었겠다.
+
+# 치킨 쿠폰
+"""
+치킨 1마리당 쿠폰 1 , 서비스 치킨에도 쿠폰 발급
+쿠폰 10장에 치킨 1마리
+1. 1081마리 시킴 -> 쿠폰 1081장 -> 쿠폰 : 1081 // 10 = 108(몫) + 1081 % 10 = 1(나머지) = 109개 
+2. 쿠폰 108개로 치킨 10마리 시킴(쿠폰 10개) + 남은쿠폰 8 + 1 -> 쿠폰: 109 // 10 = 10(몫) + 19 % 10 = 9(나머지) -> 19개
+3. 쿠폰 10개로 치킨 1마리 시킴(쿠폰 1개) + 남은 쿠폰 9개 -> 19 // 10 = 1(몫) + 9 % 10 = 9(나머지) -> 10개
+4. 쿠폰 10개로 치킨 1마리 시킴 -> 쿠폰 1개 남음, 끝 -> 10 // 10 = 1(몫) + 10 % 10 = 0(나머지) -> 1개
+
+1. 치킨 108, 2. 치킨 10, 3. 치킨 1, 4. 치킨 1 --> 총 치킨 120(몫들의 합)
+"""
+
+def solution(chicken):
+    coupon = chicken    # 초기 쿠폰의 수 1081장
+    service_chicken = 0
+    while(coupon >= 10):    # 쿠폰이 10장 미만이면 더이상 서비스 치킨을 먹을 수 없음
+        service_chicken += coupon // 10
+        coupon = coupon // 10 + coupon % 10
+    return service_chicken
+
