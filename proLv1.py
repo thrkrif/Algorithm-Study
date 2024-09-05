@@ -766,3 +766,13 @@ def solution(chicken):
         coupon = coupon // 10 + coupon % 10
     return service_chicken
 
+# 문자열 밀기
+def solution(A, B):
+    answer = 0
+    a,b = list(A),list(b)
+    for i in range(len(a)):
+        if a == b:
+            return i
+        a = a[-1] + a[]
+
+    return answer
