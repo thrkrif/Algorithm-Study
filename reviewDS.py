@@ -184,7 +184,7 @@ class NodeMgmt:
         self.head = Node(data)
         self.tail = self.head
     
-    def insert_from_head(self,data):
+    def add(self,data):
         if self.head == None:
             self.head = Node(data)
             self.tail = self.head
@@ -194,8 +194,52 @@ class NodeMgmt:
                 node = node.next
             new = Node(data)
             node.next = new
-            new = node
+            new.prev = node
             self.tail = new
+
+    def insert_from_head(self,data,after_data):
+        if self.head == None:   
+            self.head = Node(data)
+            return True
+        else:
+            node = self.head
+            while node.data != after_data:
+                node = node.next
+                if node == None:    # 해당하는 노드를 찾을 수 없다면
+                    return False
+            new = Node(data)
+            after_new = node.next
+            new.next = after_new
+            if after_new != None:
+                after_new.prev = new
+            node.next = new
+            new.prev = node
+            if after_new == None:
+                self.tail = new
+            return True
+    
+    def insert_from_tail(self,data,before_data):        # 뒤에서 데이터 삽입, 삽입할 데이터는 data, 앞에 있는 데이터는 before_data
+        if self.head == None:   
+            self.head = Node(data)
+            self.tail = self.head
+            return True
+        else:
+            node = self.tail
+            while node.data != before_data:
+                node = node.prev
+                if node == None:    # 해당하는 노드를 찾을 수 없다면
+                    return False
+            new = Node(data)
+            before_new = node.prev
+            new.next = node
+            node.prev = new
+            if before_new != None:  # 중간에 삽입하는 경우
+                before_new.next = new
+                new.prev = before_new
+            else:   # 맨 끝에 삽입하는 경우
+                self.head = new
+            return True
+
 
     def search_from_head(self,data):
         if self.head == None:
@@ -210,7 +254,7 @@ class NodeMgmt:
         print("찾으시는 노드가 없습니다.")
     
     def search_from_tail(self,data):
-        if self.tail == None:
+        if self.head == None:
             print("노드가 존재하지 않습니다. 노드를 생성해주세요.")
         node = self.tail
         while node:
@@ -233,10 +277,19 @@ class NodeMgmt:
 node = NodeMgmt(0)
 node.desc()
 for i in range(1,10):
-    node.insert_from_head(i)
+    node.add(i)
 node.desc()
 node.search_from_head(3)
+node.search_from_head(4)
+node.search_from_tail(8)
+node.search_from_tail(9)
 node.search_from_tail(7)
+result = node.insert_from_head(100, 2)
+print(f"insert_from_head 결과: {result}") 
+result = node.insert_from_tail(7.5, 8)
+print(f"insert_from_head 결과: {result}") 
+node.desc()
+
 
 
 
