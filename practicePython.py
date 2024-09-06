@@ -570,3 +570,10 @@ print(-a)
 3.bca
 4.abc 원래대로 돌아오려면 문자열 갯수만큼 반복해야함.
 """
+
+string = "3x + 7 + x"
+string_list = string.split(' + ')
+mystr = '3x'
+print(int(mystr[0]))
+
+print(str(23) + '123x + ' + str(4))

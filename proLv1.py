@@ -776,3 +776,27 @@ def solution(A, B):
         a = a[-1] + a[]
 
     return answer
+
+# 다항식 더하기
+def solution(polynomial):
+    string_list = polynomial.split(' + ')
+    sum = 0
+    xsum = 0
+    for i in string_list:
+        if 'x' in i:
+            if i == 'x':
+                xsum += 1
+            else:
+                xsum += int(i.replace('x',''))
+        else:
+            sum += int(i)
+    result = []
+    if xsum != 0:
+        if xsum == 1:
+            result.append('x')
+        else:
+            result.append(f"{xsum}x")
+    if sum != 0:
+        result.append(str(sum))
+    
+    return ' + '.join(result)

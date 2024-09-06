@@ -112,63 +112,63 @@
 
 
 
-class Node: # 노드를 만들어내는 클래스이다.
-    def __init__(self,data,next = None):
-        self.data = data
-        self.next = next
+# class Node: # 노드를 만들어내는 클래스이다.
+#     def __init__(self,data,next = None):
+#         self.data = data
+#         self.next = next
 
-class NodeMgmt:
-    # 생성자에서 Node객체를 사용하였으므로 data, next 변수를 이용 가능하다. + head라는 변수도 이용 가능하다.
-    def __init__(self,data):
-        self.head = Node(data)  # NodeMgmt를 이용하는 순간 하나의 노드가 만들어 지는 것이다.
+# class NodeMgmt:
+#     # 생성자에서 Node객체를 사용하였으므로 data, next 변수를 이용 가능하다. + head라는 변수도 이용 가능하다.
+#     def __init__(self,data):
+#         self.head = Node(data)  # NodeMgmt를 이용하는 순간 하나의 노드가 만들어 지는 것이다.
 
-    def add(self, data):
-        if self.head == '': # 노드가 아예 없으면 노드를 생성한다.
-            self.head = Node(data)
-        else:
-            node = self.head # node가 제일 처음의 노드라는 것을 의미한다.
-            while node.next:    # node.next 가 None이라면 while문을 빠져 나온다. 즉, 제일 마지막 노드라는 의미이다.
-                node = node.next
-            node.next = Node(data)   # while문을 빠져 나왔으므로 제일 마지막 노드이다. node.next == None 이었는데 새로운 Node를 추가한다.
+#     def add(self, data):
+#         if self.head == '': # 노드가 아예 없으면 노드를 생성한다.
+#             self.head = Node(data)
+#         else:
+#             node = self.head # node가 제일 처음의 노드라는 것을 의미한다.
+#             while node.next:    # node.next 가 None이라면 while문을 빠져 나온다. 즉, 제일 마지막 노드라는 의미이다.
+#                 node = node.next
+#             node.next = Node(data)   # while문을 빠져 나왔으므로 제일 마지막 노드이다. node.next == None 이었는데 새로운 Node를 추가한다.
 
-    def desc(self): # 어떤 노드들이 들어있는지 확인할 수 있도록 하는 함수이다.
-        if self.head == '':
-            print('노드가 존재하지 않습니다. 노드를 먼저 생성해주세요') # 작성 안해도 된다. NodeMgmt라는 객체를 생성할 때 Node가 무조건 만들어진다.
-        node = self.head
-        while node:
-            print(node.data)
-            node = node.next
+#     def desc(self): # 어떤 노드들이 들어있는지 확인할 수 있도록 하는 함수이다.
+#         if self.head == '':
+#             print('노드가 존재하지 않습니다. 노드를 먼저 생성해주세요') # 작성 안해도 된다. NodeMgmt라는 객체를 생성할 때 Node가 무조건 만들어진다.
+#         node = self.head
+#         while node:
+#             print(node.data)
+#             node = node.next
 
-    def delete(self,data):  # 1. 헤드를 제거 / 2. 중간,마지막 노드를 제거
+#     def delete(self,data):  # 1. 헤드를 제거 / 2. 중간,마지막 노드를 제거
         
-        if self.head.data == data:
-            del self.head
-        else:
-            node = self.head
-            while node.next:
-                if node.next.data == data:
-                    temp = node.next    # 삭제할 노드가 node.next 이므로 temp에 저장해준다.
-                    node.next = node.next.next # node가 가지고 있는 node.next 주소를 node.next.next로 바꿔준다.
-                    del temp
-                    return
-                else:
-                    node = node.next # if문을 통과하지 못한 경우 -> 아직 데이터를 찾지 못함. 다음 노드로 넘어가기 위함
+#         if self.head.data == data:
+#             del self.head
+#         else:
+#             node = self.head
+#             while node.next:
+#                 if node.next.data == data:
+#                     temp = node.next    # 삭제할 노드가 node.next 이므로 temp에 저장해준다.
+#                     node.next = node.next.next # node가 가지고 있는 node.next 주소를 node.next.next로 바꿔준다.
+#                     del temp
+#                     return
+#                 else:
+#                     node = node.next # if문을 통과하지 못한 경우 -> 아직 데이터를 찾지 못함. 다음 노드로 넘어가기 위함
 
-    def search_node(self,data): # 특정 노드를 찾아서 출력하는 기능
-        node = self.head
-        while node:
-            if node.data == data:
-                print("찾으시는 노드는", node.data)
-                break
-            node = node.next
+#     def search_node(self,data): # 특정 노드를 찾아서 출력하는 기능
+#         node = self.head
+#         while node:
+#             if node.data == data:
+#                 print("찾으시는 노드는", node.data)
+#                 break
+#             node = node.next
 
 
-mynode = NodeMgmt(0)
-mynode.desc()
-for i in range(1,10):
-    mynode.add(i)
-mynode.desc()
-mynode.search_node(3)
+# mynode = NodeMgmt(0)
+# mynode.desc()
+# for i in range(1,10):
+#     mynode.add(i)
+# mynode.desc()
+# mynode.search_node(3)
 
 
 # 더블 링크드 리스트
@@ -184,7 +184,7 @@ class NodeMgmt:
         self.head = Node(data)
         self.tail = self.head
     
-    def insert(self,data):
+    def insert_from_head(self,data):
         if self.head == None:
             self.head = Node(data)
             self.tail = self.head
@@ -196,9 +196,47 @@ class NodeMgmt:
             node.next = new
             new = node
             self.tail = new
-            
-        
 
+    def search_from_head(self,data):
+        if self.head == None:
+            print("노드가 존재하지 않습니다. 노드를 생성해주세요.")
+        node = self.head
+        while node:
+            if node.data == data:
+                print("찾으시는 노드",node.data)
+                return
+            else:
+                node = node.next
+        print("찾으시는 노드가 없습니다.")
+    
+    def search_from_tail(self,data):
+        if self.tail == None:
+            print("노드가 존재하지 않습니다. 노드를 생성해주세요.")
+        node = self.tail
+        while node:
+            if node.data == data:
+                print("찾으시는 노드",node.data)
+                return
+            else:
+                node = node.prev
+        print("찾으시는 노드가 없습니다.")
+
+
+    def desc(self): # 어떤 노드들이 들어있는지 확인할 수 있도록 하는 함수이다.
+        if self.head == '':
+            print('노드가 존재하지 않습니다. 노드를 먼저 생성해주세요') # 작성 안해도 된다. NodeMgmt라는 객체를 생성할 때 Node가 무조건 만들어진다.
+        node = self.head
+        while node:
+            print(node.data)
+            node = node.next
+
+node = NodeMgmt(0)
+node.desc()
+for i in range(1,10):
+    node.insert_from_head(i)
+node.desc()
+node.search_from_head(3)
+node.search_from_tail(7)
 
 
 
