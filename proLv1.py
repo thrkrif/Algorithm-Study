@@ -800,3 +800,17 @@ def solution(polynomial):
         result.append(str(sum))
     
     return ' + '.join(result)
+
+# 다음에 올 숫자
+"""
+common은 등차 또는 등비 수열
+"""    
+def solution(common):
+    
+    # 1. 등차 수열
+    if common[1] - common[0] == common[2] - common[1]:
+        return common[-1] + (common[1] - common[0])
+    # 2. 등비 수열
+    if common[1] // common[0] == common[2] // common[1]:
+        return common[-1] * (common[1] // common[0])
+    

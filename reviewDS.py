@@ -239,6 +239,25 @@ class NodeMgmt:
             else:   # 맨 끝에 삽입하는 경우
                 self.head = new
             return True
+        
+    def search_from_head_del(self,data):
+        if self.head == None:
+            print("노드가 존재하지 않습니다.")
+        node = self.head
+        while node:
+            if node.data == data:  
+                if self.head.data == data: # 헤드가 삭제할 데이터
+                    node.next.prev = None
+                    node.next = self.head
+                    del node
+                    return True
+                else:   # 중간~마지막이 삭제할 데이터
+                    
+            else:   
+                node = node.next
+
+
+        print("찾으시는 노드가 없습니다.")
 
 
     def search_from_head(self,data):
